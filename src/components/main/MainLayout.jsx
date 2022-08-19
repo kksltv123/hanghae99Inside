@@ -1,10 +1,12 @@
 import React from 'react';
+import MainContents from './MainContents';
 
 const mainLayout = () => {
+    
     return (
-        <div>
-            메인레이아웃dddddddddddddd
-        </div>
+        <>
+            <MainContents/>
+        </>
     );
 };
 
