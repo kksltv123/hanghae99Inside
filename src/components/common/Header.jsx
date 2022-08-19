@@ -1,14 +1,17 @@
 import React from 'react';
 import Layout from './Layout';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+    const navigate = useNavigate();
+
     return (
         <>
             <StTopHeader>
                 <StTitle>Hanghae Inside</StTitle>
                 <StInput/>
-                <StButton>로그인</StButton>
+                <StButton onClick={() => {navigate("/login")}}>로그인</StButton>
             </StTopHeader>
             <StBottomHeader>
                 <Layout>
