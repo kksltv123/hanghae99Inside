@@ -3,7 +3,8 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Main from '../components/pages/Main';
 import Detail from '../components/pages/Detail';
 import Create from '../components/pages/Create';
-import NotFound from '../components/pages/NotFound'
+import Login from '../components/pages/LogIn';
+import NotFound from '../components/pages/NotFound';
 
 
 const Router = (props) => {
@@ -14,6 +15,7 @@ const Router = (props) => {
                 <Route path='/main' element={<Main/>}/>
                 <Route path='/detail/:postId' element={<Detail/>}/>
                 <Route path='/create' element={<Create/>}/>
+                <Route path='/login' element={<Login/>}/>
                 <Route path='*' element={<NotFound/>}/>
             </Routes>
         </BrowserRouter>

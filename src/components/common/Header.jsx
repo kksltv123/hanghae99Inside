@@ -6,7 +6,7 @@ const Header = () => {
     return (
         <>
             <StTopHeader>
-                <StTitle>항해 인사이드</StTitle>
+                <StTitle>Hanghae Inside</StTitle>
                 <StInput/>
                 <StButton>로그인</StButton>
             </StTopHeader>
@@ -52,8 +52,8 @@ const StButton = styled.button`
 `
 
 const StTitle = styled.h1`
-    font-size: ${(props) => props.theme.fontsizes.title};
-    color: ${(props) => props.theme.colors.mainColor};
+    font-size: ${(props) => props.theme.fontsizes.subtitle};
+    color: #000;
     font-style: italic;
 `
 
