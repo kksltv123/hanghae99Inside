@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux"
+import { useSelector,useDispatch } from "react-redux";
 import styled from 'styled-components';
 import { getPostsAsync } from '../../redux/modules/postsSlice';
 import { Link } from "react-router-dom"
@@ -8,9 +7,7 @@ import { Link } from "react-router-dom"
 const MainContents = () => {
     const dispatch = useDispatch();
 
-
     const posts = useSelector((state) => state.posts)
-    console.log(posts)
  
 
     useEffect(() => {

@@ -27,10 +27,6 @@ const Footer = () => {
 };
 
 const StFooter = styled.footer`
-    width: 100%;
-    width: 1200px;
-    position: absolute;
-    bottom: 0;
     border-top: 1px solid ${(props) => props.theme.colors.mainColor};
     padding: 30px;
 `

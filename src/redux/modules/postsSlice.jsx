@@ -15,6 +15,14 @@ export const getPostsAsync = createAsyncThunk(
     }
 )
 
+export const DeletePostsAsync = createAsyncThunk(
+    "post/DeletePostsAsync",
+    async (postId,thunkAPI) => {
+        const response = await axios.delete(`http://localhost:3001/POST/${postId}`)
+        console.log(response) 
+    }
+)
+
 const initialState = {
     POST : [
 
@@ -28,10 +36,9 @@ export const postsSlice = createSlice({
     reducers : {},
     extraReducers: {
         [getPostsAsync.fulfilled] : (state, action) => {
-            console.log(action)
             state.POST = action.payload
         },
-        [getPostsAsync.rejected] : (state, action) => {
+        [DeletePostsAsync.fulfilled] : (state, action) => {
             console.log(action)
         }
     }
