@@ -7,7 +7,7 @@ import Login from '../components/pages/LogIn';
 import NotFound from '../components/pages/NotFound';
 
 
-const Router = (props) => {
+const Router = () => {
     return (
         <BrowserRouter>
             <Routes>
@@ -19,7 +19,7 @@ const Router = (props) => {
                 <Route path='*' element={<NotFound/>}/>
             </Routes>
         </BrowserRouter>
-    );
+    )
 };
 
 export default Router;
