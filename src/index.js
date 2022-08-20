@@ -3,14 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import store from './redux/config/configStore';
 import theme from './assets/theme'
 import { ThemeProvider } from 'styled-components';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <Provider store = {store}>
   <ThemeProvider theme={theme}>
     <App />
   </ThemeProvider>
+  </Provider> 
+
 );
 
 // If you want to start measuring performance in your app, pass a function
