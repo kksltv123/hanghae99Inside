@@ -1,23 +1,310 @@
 {
-    "POST" : [
-        {
-            "postId" : 1,
-            "memberNickname" : "작성자",
-            "title" : "여기에 제목이 들어갑니다",
-            "posting" : "https://cdn.pixabay.com/photo/2021/11/16/15/35/electronics-6801339_960_720.jpg"
-        },
-        {
-            "postId" : 2,
-            "memberNickname" : "작성자 2",
-            "title" : "실전프로젝트 너무 무서워...",
-            "posting" : "https://cdn.pixabay.com/photo/2021/11/16/15/35/electronics-6801339_960_720.jpg"
-        },
-        {
-            "postId" : 3,
-            "memberNickname" : "작성자 2",
-            "title" : "실전프로젝트 너무 무서워...",
-            "posting" : "https://cdn.pixabay.com/photo/2021/11/16/15/35/electronics-6801339_960_720.jpg"
-        }
-    ]
-
+  "POST": [
+    {
+      "postId": 1,
+      "memberNickname": "작성자",
+      "title": "여기에 제목이 들어갑니다",
+      "posting": "https://cdn.pixabay.com/photo/2021/11/16/15/35/electronics-6801339_960_720.jpg"
+    },
+    {
+      "postId": 2,
+      "memberNickname": "작성자 2",
+      "title": "실전프로젝트 너무 무서워...",
+      "posting": "https://cdn.pixabay.com/photo/2021/11/16/15/35/electronics-6801339_960_720.jpg"
+    },
+    {
+      "postId": 3,
+      "memberNickname": "작성자 2",
+      "title": "실전프로젝트 너무 무서워...",
+      "posting": "https://cdn.pixabay.com/photo/2021/11/16/15/35/electronics-6801339_960_720.jpg"
+    }
+  ],
+  "emailCheck": [
+    {
+      "email": "kksltv123@naver.com",
+      "id": 1
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 2
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 3
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 4
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 5
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 6
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 7
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 8
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 9
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 10
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 11
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 12
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 13
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 14
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 15
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 16
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 17
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 18
+    },
+    {
+      "email": "",
+      "id": 19
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 20
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 21
+    },
+    {
+      "email": "",
+      "id": 22
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 23
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 24
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 25
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 26
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 27
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 28
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 29
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 30
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 31
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 32
+    },
+    {
+      "email": "",
+      "id": 33
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 34
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 35
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 36
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 37
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "id": 38
+    }
+  ],
+  "nicknameCheck": [
+    {
+      "nickname": "박수원",
+      "id": 1
+    },
+    {
+      "nickname": "박수원",
+      "id": 2
+    },
+    {
+      "nickname": "박수원",
+      "id": 3
+    },
+    {
+      "nickname": "박수원",
+      "id": 4
+    },
+    {
+      "nickname": "박수원",
+      "id": 5
+    },
+    {
+      "nickname": "박수원",
+      "id": 6
+    },
+    {
+      "nickname": "박수원",
+      "id": 7
+    },
+    {
+      "nickname": "박수원",
+      "id": 8
+    },
+    {
+      "nickname": "박수원",
+      "id": 9
+    },
+    {
+      "nickname": "박수원",
+      "id": 10
+    },
+    {
+      "nickname": "박수원",
+      "id": 11
+    },
+    {
+      "nickname": "박수원",
+      "id": 12
+    },
+    {
+      "nickname": "박수원",
+      "id": 13
+    },
+    {
+      "nickname": "",
+      "id": 14
+    },
+    {
+      "nickname": "",
+      "id": 15
+    },
+    {
+      "nickname": "",
+      "id": 16
+    },
+    {
+      "nickname": "박수원",
+      "id": 17
+    },
+    {
+      "nickname": "박수원",
+      "id": 18
+    },
+    {
+      "nickname": "박수원",
+      "id": 19
+    },
+    {
+      "nickname": "박수원",
+      "id": 20
+    },
+    {
+      "nickname": "박수원",
+      "id": 21
+    },
+    {
+      "nickname": "박수원",
+      "id": 22
+    }
+  ],
+  "signup": [
+    {
+      "email": "kksltv123@naver.com",
+      "nickname": "박수원",
+      "password": "@qkr85245sgh",
+      "passwordCheck": "@qkr85245sgh",
+      "id": 1
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "nickname": "박수원",
+      "password": "@qkr85245sgh",
+      "passwordCheck": "@qkr85245sgh",
+      "id": 2
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "nickname": "박수원",
+      "password": "@qkr85245sgh",
+      "passwordCheck": "@qkr85245sgh",
+      "id": 3
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "nickname": "박수원",
+      "password": "@qkr85245sgh",
+      "passwordCheck": "@qkr85245sgh",
+      "id": 4
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "nickname": "박수원",
+      "password": "@qkr85245sgh",
+      "passwordCheck": "@qkr85245sgh",
+      "id": 5
+    },
+    {
+      "email": "kksltv123@naver.com",
+      "nickname": "박수원",
+      "password": "@qkr85245sgh",
+      "passwordCheck": "@qkr85245sgh",
+      "id": 6
+    }
+  ]
 }

@@ -12,14 +12,14 @@ const LoginLayout = () => {
 
     return (
         <>
-        <StLoginForm>
+        <StLoginBox>
             {gotoSignUp ? <SignUp SignInUpToggle={SignInUpToggle}/> : <SignIn SignInUpToggle={SignInUpToggle}/>}
-        </StLoginForm>
+        </StLoginBox>
     </>
     );
 };
 
-const StLoginForm = styled.div`
+const StLoginBox = styled.div`
     width: 500px;
     border: 2px solid ${(props) => props.theme.colors.mainColor};
     position: absolute;
