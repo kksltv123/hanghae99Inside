@@ -1,0 +1,23 @@
+{
+    "POST" : [
+        {
+            "postId" : 1,
+            "memberNickname" : "작성자",
+            "title" : "여기에 제목이 들어갑니다",
+            "posting" : "https://cdn.pixabay.com/photo/2021/11/16/15/35/electronics-6801339_960_720.jpg"
+        },
+        {
+            "postId" : 2,
+            "memberNickname" : "작성자 2",
+            "title" : "실전프로젝트 너무 무서워...",
+            "posting" : "https://cdn.pixabay.com/photo/2021/11/16/15/35/electronics-6801339_960_720.jpg"
+        },
+        {
+            "postId" : 3,
+            "memberNickname" : "작성자 2",
+            "title" : "실전프로젝트 너무 무서워...",
+            "posting" : "https://cdn.pixabay.com/photo/2021/11/16/15/35/electronics-6801339_960_720.jpg"
+        }
+    ]
+
+}
