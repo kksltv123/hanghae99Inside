@@ -1,10 +1,12 @@
 import React from 'react';
+import DetailContents from './DetailContents';
 
 const DetailLayout = () => {
     return (
-        <div>
-            
-        </div>
+        <>
+            <DetailContents/>
+           
+        </>
     );
 };
 
