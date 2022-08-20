@@ -1,14 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
+import axios from "axios"
+
+
+
+export const getPostsAsync = createAsyncThunk(
+    "post/getPostsAsync",
+    async (payload,data) => {
+        try{
+            const response = await axios.get ("http://localhost:3001/POST")
+           return data.fulfillWithValue(response.data)
+        }catch (e) {
+           return data.rejectWithValue(e)
+        }
+    }
+)
 
 const initialState = {
     POST : [
-        {
-            "postId" : 1,
-            "memberNickname" : "작성자",
-            "title" : "여기에 제목이 들어갑니다",
-            "content" : "여기에 내용이 들어갑니다",
-            "posting" : "https://cdn.pixabay.com/photo/2021/11/16/15/35/electronics-6801339_960_720.jpg"
-        }
+
     ]
 }
 
@@ -17,6 +26,15 @@ export const postsSlice = createSlice({
     name: "posts",
     initialState,
     reducers : {},
+    extraReducers: {
+        [getPostsAsync.fulfilled] : (state, action) => {
+            console.log(action)
+            state.POST = action.payload
+        },
+        [getPostsAsync.rejected] : (state, action) => {
+            console.log(action)
+        }
+    }
 })
 
 export const {} = postsSlice.actions;
