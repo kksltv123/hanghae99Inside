@@ -25,6 +25,11 @@
     {
       "id": 3,
       "postId": 3,
+      "memberNickname": "작성자 2",
+      "title": "실전프로젝트 너무 무서워...",
+      "posting": "https://cdn.pixabay.com/photo/2021/11/16/15/35/electronics-6801339_960_720.jpg"
+    }
+  ]
       "memberNickname": "작성자 3",
       "title": "나 이러다 죽는건 아닐까?",
       "content": "내가 커피인지 커피가 난지 모르겠다",
@@ -71,5 +76,4 @@
       "modifiedAt" : "21:12:15"
     }
  ]
-
 }
