@@ -2,16 +2,57 @@ import React from 'react';
 import Layout from './Layout';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
+import { useState } from 'react';
 
 const Header = () => {
     const navigate = useNavigate();
+    const nickname = localStorage.getItem('nickname');
+    const isLogin = localStorage.getItem('isLogin');
+    const success = useSelector((state) => state.user.success)
+    const [ logout, setLogout ] = useState(success)
+
+    console.log(isLogin)
+    // console.log(success)
+    console.log(logout)
+
+
+    // 로그아웃 토큰 지우기
+    const logOut = () => {
+        const logoutM = window.confirm("정말 로그아웃 하실건가요?")
+        if(logoutM === true) {
+            const RefreshToken = localStorage.getItem('refreshToken');
+            const Authorization = localStorage.getItem('authorization');
+            const headers = {
+                'Content-Type': 'application/json',
+                Authorization: `${Authorization}`,
+                Refreshtoken: `${RefreshToken}`
+            }
+            const response = axios.delete('http://54.180.153.149/api/logout', {
+                headers : headers
+            })
+            setLogout(response.data)
+            window.localStorage.clear();
+        } else { return }
+    }
 
     return (
         <>
             <StTopHeader>
                 <StTitle>Hanghae Inside</StTitle>
-                <StInput/>
-                <StButton onClick={() => {navigate("/login")}}>로그인</StButton>
+                <StInput />
+                {isLogin ?
+                    <>
+                        <p>{nickname}님 어서오세요.</p>
+                        <StButton onClick={logOut}>로그아웃</StButton>
+                    </>
+                    :
+                    <>
+                        <StButton onClick={() => { navigate("/login") }}>로그인</StButton>
+                    </>
+
+                }
             </StTopHeader>
             <StBottomHeader>
                 <Layout>
