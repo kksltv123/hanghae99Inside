@@ -25,13 +25,9 @@
     {
       "id": 3,
       "postId": 3,
-      "memberNickname": "작성자 3",
-      "title": "나 이러다 죽는건 아닐까?",
-      "content": "내가 커피인지 커피가 난지 모르겠다",
-      "posting": "https://cdn.pixabay.com/photo/2019/05/28/05/47/puppy-4234435__340.jpg",
-      "createdAt": "01:20:05",
-      "viewCnt": 10,
-      "heartCnt": 15
+      "memberNickname": "작성자 2",
+      "title": "실전프로젝트 너무 무서워...",
+      "posting": "https://cdn.pixabay.com/photo/2021/11/16/15/35/electronics-6801339_960_720.jpg"
     }
   ],
   "COMMENTS": [
