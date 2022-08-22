@@ -1,11 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useForm } from "react-hook-form";
+import { useDispatch } from 'react-redux';
+import { __loginDB } from '../../redux/modules/userSlice';
+import { useNavigate } from "react-router-dom";
 
 const SignIn = ({ SignInUpToggle }) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
+        dispatch(__loginDB(data))
+        window.alert("환영합니다.")
+        navigate("/main")
 
     }
 

@@ -17,8 +17,9 @@ const SignUp = ({SignInUpToggle}) => {
         try {
             const email = watch("email")
             const postEmail = { email }
-            const response = await axios.post('http://localhost:3001/emailCheck',postEmail);
+            const response = await axios.post('http://54.180.153.149/api/emailCheck',postEmail);
             // 중복 x = false, 중복 o: true,
+            console.log(response.data)
             if(response.data === false){
                 let answer = window.confirm("사용할 수 있는 이메일입니다 사용하시겠습니까?");
                 answer && setCheck({
@@ -38,7 +39,8 @@ const SignUp = ({SignInUpToggle}) => {
         try {
             const nickname = watch("nickname")
             const postNickname = { nickname }
-            const response = await axios.post('http://localhost:3001/nicknameCheck',postNickname);
+            const response = await axios.post('http://54.180.153.149/api/nicknameCheck',postNickname);
+            console.log(response.data)
             // 중복 x = false, 중복 o: true,
             if(response.data === false){
                 let answer = window.confirm("사용할 수 있는 닉네임입니다 사용하시겠습니까?");
@@ -61,9 +63,7 @@ const SignUp = ({SignInUpToggle}) => {
             return
         }
 
-        await axios.post('http://localhost:3001/register', data, {
-            withCredentials: true // 쿠키 cors 통신 설정
-        })
+        await axios.post('http://54.180.153.149/api/register', data)
         alert('회원가입 되셨습니다 축하합니다')
         SignInUpToggle();
     }

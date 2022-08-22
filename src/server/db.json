@@ -29,51 +29,42 @@
       "title": "실전프로젝트 너무 무서워...",
       "posting": "https://cdn.pixabay.com/photo/2021/11/16/15/35/electronics-6801339_960_720.jpg"
     }
-  ]
-      "memberNickname": "작성자 3",
-      "title": "나 이러다 죽는건 아닐까?",
-      "content": "내가 커피인지 커피가 난지 모르겠다",
-      "posting": "https://cdn.pixabay.com/photo/2019/05/28/05/47/puppy-4234435__340.jpg",
-      "createdAt": "01:20:05",
-      "viewCnt": 10,
-      "heartCnt": 15
-    }
   ],
- "COMMENTS" : [
+  "COMMENTS": [
     {
-      "postId" : 1,
-      "commentId" : 1,
-      "memberNickname" : "항해 탈주닌자",
-      "content" : "강해져서 돌아옴 ㅅㄱ",
-      "modifiedAt" : "17:01:15"
+      "postId": 1,
+      "commentId": 1,
+      "memberNickname": "항해 탈주닌자",
+      "content": "강해져서 돌아옴 ㅅㄱ",
+      "modifiedAt": "17:01:15"
     },
     {
-      "postId" : 1,
-      "commentId" : 2,
-      "memberNickname" : "최소 거북",
-      "content" : "거북목 정도에 따라 코딩력이 나뉩니다~",
-      "modifiedAt" : "20:50:15"
+      "postId": 1,
+      "commentId": 2,
+      "memberNickname": "최소 거북",
+      "content": "거북목 정도에 따라 코딩력이 나뉩니다~",
+      "modifiedAt": "20:50:15"
     },
     {
-      "postId" : 1,
-      "commentId" : 3,
-      "memberNickname" : "목아퍼",
-      "content" : "거북이는 다시 집어넣을 수 라도 있잖아..",
-      "modifiedAt" : "21:12:15"
+      "postId": 1,
+      "commentId": 3,
+      "memberNickname": "목아퍼",
+      "content": "거북이는 다시 집어넣을 수 라도 있잖아..",
+      "modifiedAt": "21:12:15"
     },
     {
-      "postId" : 2,
-      "commentId" : 1,
-      "memberNickname" : "두번째 게시글",
-      "content" : "두번째 게시글 테스트 입니다~",
-      "modifiedAt" : "21:12:15"
+      "postId": 2,
+      "commentId": 1,
+      "memberNickname": "두번째 게시글",
+      "content": "두번째 게시글 테스트 입니다~",
+      "modifiedAt": "21:12:15"
     },
     {
-      "postId" : 3,
-      "commentId" : 1,
-      "memberNickname" : "세번째 게시글",
-      "content" : "세번째 게시글 테스트 입니다~",
-      "modifiedAt" : "21:12:15"
+      "postId": 3,
+      "commentId": 1,
+      "memberNickname": "세번째 게시글",
+      "content": "세번째 게시글 테스트 입니다~",
+      "modifiedAt": "21:12:15"
     }
- ]
+  ]
 }
