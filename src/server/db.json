@@ -32,39 +32,51 @@
   ],
   "COMMENTS": [
     {
+      "id": 1,
       "postId": 1,
-      "commentId": 1,
       "memberNickname": "항해 탈주닌자",
       "content": "강해져서 돌아옴 ㅅㄱ",
+      "password": "1111",
       "modifiedAt": "17:01:15"
     },
     {
+      "id": 2,
       "postId": 1,
-      "commentId": 2,
       "memberNickname": "최소 거북",
       "content": "거북목 정도에 따라 코딩력이 나뉩니다~",
+      "password": "1111",
       "modifiedAt": "20:50:15"
     },
     {
+      "id": 3,
       "postId": 1,
-      "commentId": 3,
       "memberNickname": "목아퍼",
       "content": "거북이는 다시 집어넣을 수 라도 있잖아..",
+      "password": "1111",
+      "modifiedAt": "21:12:15"
+    },
+    {
+      "id": 1,
+      "postId": 2,
+      "memberNickname": "두번째 게시글",
+      "content": "두번째 게시글 테스트 입니다~",
+      "password": "1111",
+      "modifiedAt": "21:12:15"
+    },
+    {
+      "id": 1,
+      "postId": 3,
+      "memberNickname": "세번째 게시글",
+      "content": "세번째 게시글 테스트 입니다~",
+      "password": "1111",
       "modifiedAt": "21:12:15"
     },
     {
       "postId": 2,
-      "commentId": 1,
-      "memberNickname": "두번째 게시글",
-      "content": "두번째 게시글 테스트 입니다~",
-      "modifiedAt": "21:12:15"
-    },
-    {
-      "postId": 3,
-      "commentId": 1,
-      "memberNickname": "세번째 게시글",
-      "content": "세번째 게시글 테스트 입니다~",
-      "modifiedAt": "21:12:15"
+      "memberNickname": "ㅁㅁㅁ",
+      "content": "ㅁㅇㄹ",
+      "password": "1111",
+      "id": 4
     }
   ]
 }
