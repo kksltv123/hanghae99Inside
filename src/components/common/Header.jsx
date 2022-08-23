@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { __logout } from '../../redux/modules/userSlice';
 
 const Header = () => {
     const navigate = useNavigate();
@@ -12,6 +14,7 @@ const Header = () => {
     const isLogin = localStorage.getItem('isLogin');
     const success = useSelector((state) => state.user.success)
     const [ logout, setLogout ] = useState(success)
+    const dispatch = useDispatch()
 
     console.log(isLogin)
     // console.log(success)
@@ -22,17 +25,9 @@ const Header = () => {
     const logOut = () => {
         const logoutM = window.confirm("정말 로그아웃 하실건가요?")
         if(logoutM === true) {
-            const RefreshToken = localStorage.getItem('refreshToken');
-            const Authorization = localStorage.getItem('authorization');
-            const headers = {
-                'Content-Type': 'application/json',
-                Authorization: `${Authorization}`,
-                Refreshtoken: `${RefreshToken}`
-            }
-            const response = axios.delete('http://54.180.153.149/api/logout', {
-                headers : headers
-            })
-            setLogout(response.data)
+            dispatch(__logout());
+            setLogout(success)
+            console.log(success)
             window.localStorage.clear();
         } else { return }
     }
@@ -43,13 +38,13 @@ const Header = () => {
                 <StTitle>Hanghae Inside</StTitle>
                 <StInput />
                 {isLogin ?
-                    <>
+                    <StDiv>
                         <p>{nickname}님 어서오세요.</p>
                         <StButton onClick={logOut}>로그아웃</StButton>
-                    </>
+                    </StDiv>
                     :
                     <>
-                        <StButton onClick={() => { navigate("/login") }}>로그인</StButton>
+                        <StButtonLogin onClick={() => { navigate("/login") }}>로그인</StButtonLogin>
                     </>
 
                 }
@@ -84,8 +79,23 @@ const StInput = styled.input`
     padding: 10px;
     margin-left: 100px;
 `
+const StDiv = styled.div`
+    margin-left: 100px;
+    display: flex;
+    align-items: center;
+`
 
 const StButton = styled.button`
+    color: #fff;
+    background-color: ${(props) => props.theme.colors.mainColor};
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+`
+
+const StButtonLogin = styled.button`
     color: #fff;
     background-color: ${(props) => props.theme.colors.mainColor};
     border: none;
