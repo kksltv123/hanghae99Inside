@@ -380,19 +380,17 @@
   "COMMENTS": [
     {
       "id": 1,
-      "postId": 1,
-      "memberNickname": "항해 탈주닌자",
-      "content": "강해져서 돌아옴 ㅅㄱ",
+      "memberNickname": "두번째 게시글",
       "password": "1111",
-      "modifiedAt": "17:01:15"
+      "postId": 2,
+      "content": "알랑가몰라"
     },
     {
       "id": 2,
-      "postId": 1,
       "memberNickname": "최소 거북",
-      "content": "거북목 정도에 따라 코딩력이 나뉩니다~",
       "password": "1111",
-      "modifiedAt": "20:50:15"
+      "postId": 1,
+      "content": "ㅁㄴㅇㅍ"
     },
     {
       "id": 3,
