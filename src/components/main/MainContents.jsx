@@ -17,8 +17,8 @@ const MainContents = ({ posts, loading }) => {
             {posts.map(post => (
                 <StDiv key={post.id} onClick={() => {navigate(`/detail/${post.id}`)}}>
                     <StLiTitle>{post.posting ? <FontAwesomeIcon icon={faImage}/> : <FontAwesomeIcon icon={faCommentDots}/>}<span>{post.title}</span></StLiTitle>
-                    <StLiAuthor>{post.memberNickname}</StLiAuthor>
-                    <StLiDate>{post.createdAt}</StLiDate>
+                    <StLiAuthor>{post.nickname}</StLiAuthor>
+                    <StLiDate>{post.createAt}</StLiDate>
                     <StLiView>{post.viewCnt}</StLiView>
                     <StLiHeart>{post.heartCnt}</StLiHeart>
                 </StDiv>

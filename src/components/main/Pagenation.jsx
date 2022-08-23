@@ -12,8 +12,8 @@ const Pagenation = ({ postsPerPage, totalPosts, paginate }) => {
         <nav>
             <StUl>
                 {pageNumbers.map(number => (
-                    <StLi key={number}>
-                        <span onClick={() => paginate(number)}>
+                    <StLi key={number} onClick={() => paginate(number)}>
+                        <span>
                             {number}
                         </span>
                     </StLi>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MainContents from './MainContents';
 import MainSideBox from './MainSideBox';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import axios from 'axios';
 import Pagenation from './Pagenation';
 import { Link } from 'react-router-dom';
@@ -16,7 +16,7 @@ const MainLayout = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             setLoading(true);
-            const res = await axios.get('http://localhost:3001/POST')
+            const res = await axios.get('http://54.180.153.149/api/posts')
             setPosts(res.data);
             setLoading(false);
         }
@@ -25,8 +25,11 @@ const MainLayout = () => {
     }, [])
 
     // 개념글
+    // const [topPosts, setTopPosts] = useState([]);
 
-
+    // 개념글 전체글 버튼
+    const [buttonToggle, setbuttonToggle] = useState(true)
+    console.log(buttonToggle)
 
     // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
@@ -38,27 +41,50 @@ const MainLayout = () => {
 
     return (
         <StWrap>
-            <PostsContainer>
-                <h3>항해 갤러리</h3>
-                <StTapDiv>
-                    <StInnerDiv>
-                        <StTap1>전체글</StTap1>
-                        <StTap2>개념글</StTap2>
-                    </StInnerDiv>
-                    <Link to="/create"><StTap3>글쓰기</StTap3></Link>
-                </StTapDiv>
-                <StGelleryHeader>
-                    <StLiTitle>제목</StLiTitle>
-                    <StLiAutor>글쓴이</StLiAutor>
-                    <StLiDate>작성일</StLiDate>
-                    <StLi>조회</StLi>
-                    <StLi>추천</StLi>
-                </StGelleryHeader>
-                <MainContents posts={currentPosts} loading={loading}/> 
-                <Pagenation postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate} />
-                <MainSideBox/>
-            </PostsContainer>
-        </StWrap>    
+            {buttonToggle ?
+                <PostsContainer>
+                    <h3>항해 전체글</h3>
+                    <StTapDiv>
+                        <StInnerDiv>
+                            <StTap1 onClick={() => setbuttonToggle(true)}>전체글</StTap1>
+                            <StTap2 onClick={() => setbuttonToggle(false)}>개념글</StTap2>
+                        </StInnerDiv>
+                        <Link to="/create"><StTap3>글쓰기</StTap3></Link>
+                    </StTapDiv>
+                    <StGelleryHeader>
+                        <StLiTitle>제목</StLiTitle>
+                        <StLiAutor>글쓴이</StLiAutor>
+                        <StLiDate>작성일</StLiDate>
+                        <StLi>조회</StLi>
+                        <StLi>추천</StLi>
+                    </StGelleryHeader>
+                    <MainContents posts={currentPosts} loading={loading} />
+                    <Pagenation postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate} />
+                    <MainSideBox />
+                </PostsContainer>
+                :
+                <PostsContainer>
+                    <h3>항해 개념글</h3>
+                    <StTapDiv>
+                        <StInnerDiv>
+                            <StTap1 onClick={() => setbuttonToggle(true)}>전체글</StTap1>
+                            <StTap2 onClick={() => setbuttonToggle(false)}>개념글</StTap2>
+                        </StInnerDiv>
+                        <Link to="/create"><StTap3>글쓰기</StTap3></Link>
+                    </StTapDiv>
+                    <StGelleryHeader>
+                        <StLiTitle>제목</StLiTitle>
+                        <StLiAutor>글쓴이</StLiAutor>
+                        <StLiDate>작성일</StLiDate>
+                        <StLi>조회</StLi>
+                        <StLi>추천</StLi>
+                    </StGelleryHeader>
+                    <MainContents posts={currentPosts} loading={loading} />
+                    <Pagenation postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate} />
+                    <MainSideBox />
+                </PostsContainer>
+            }
+        </StWrap>
     )
 };
 
