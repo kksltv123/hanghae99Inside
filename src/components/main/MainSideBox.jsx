@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const MainSideBox = () => {
     return (
        <> 
         <SideBox>
             <LoginBox>
-            로그인 해주세요
+                <Link to="/login">로그인 해주세요</Link>
             </LoginBox>
             <MyBox>
-            <button>my갤로그</button>
+                <button>my갤로그</button>
             </MyBox>
         </SideBox>
         <BestPost>
@@ -23,32 +24,52 @@ export default MainSideBox;
 
 
 const SideBox = styled.div`
-    position: absolute;
+    position: fixed;
     border: 1px solid black;
     top: 20%;
     left: 80%;
-    width: 250px;
-    `
+    width: 240px;
+    padding: 10px;
+    background-color: rgba(0,0,128,0.1);
+    backdrop-filter: blur(2px);
+    border-radius: 10px;
+    border: 1px solid ${(props) => props.theme.colors.mainColor};
+    button {
+        background-color: ${(props) => props.theme.colors.mainColor};
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 10px;
+    }
+`
 
 const LoginBox = styled.div`
     height: 43px;
     line-height: 44px;
     font-size: 14px;
-    color: black;
+    cursor: pointer;
+    a {
+        color: ${(props) => props.theme.colors.mainColor};
+        text-decoration: none;
+    }
 `
 
 const MyBox = styled.div`
     height: 36px;
     line-height: 36px;
-    text-align: center;
     clear: both;
 `
 
 const  BestPost = styled.div`
-    position: absolute;
+    position: fixed;
     border: 1px solid black;
-    top: 20%;
+    top: 21%;
     left: 80%;
-    width: 250px;
+    width: 240px;
     margin-top: 100px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid ${(props) => props.theme.colors.mainColor};
 `

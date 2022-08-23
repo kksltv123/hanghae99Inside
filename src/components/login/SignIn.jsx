@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from 'react-redux';
 import { __loginDB } from '../../redux/modules/userSlice';
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom"
 
 const SignIn = ({ SignInUpToggle }) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -41,6 +42,7 @@ const SignIn = ({ SignInUpToggle }) => {
             {errors.password && errors.password.type === "pattern" && <p>영문, 숫자, 특수문자 혼합하여 8~20자리로 입력해주세요. </p>}
             <StButton>로그인</StButton>
             <StButton onClick={SignInUpToggle}>회원가입</StButton>
+            <Link to="/main">뒤로가기</Link> 
         </StForm>
     );
 };

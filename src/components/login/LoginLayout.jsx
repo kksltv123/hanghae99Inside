@@ -30,6 +30,7 @@ const StLoginBox = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 80px 0;
+    border-radius: 10px;
 `
 
 export default LoginLayout;
