@@ -41,9 +41,7 @@ export const deleteCommentsAsync = createAsyncThunk (
     async(payload,data) => {
         console.log(payload)
         try{
-            const response = await axios.delete(`http://localhost:3001/COMMENTS`,{
-            password : payload.password
-        })
+            const response = await axios.delete(`http://localhost:3001/COMMENTS/${payload}`)
             return data.fulfillWithValue(response.data)    
         }catch (e) {
             return data.rejectWithValue(e)
@@ -51,6 +49,26 @@ export const deleteCommentsAsync = createAsyncThunk (
         
     }
 )
+
+export const editCommentsAsync = createAsyncThunk (
+    "commets/editCommentsAsync",
+    async(payload,data) => {
+        console.log(payload)
+        try{
+            const response = await axios.put(`http://localhost:3001/COMMENTS/${payload.id}`,{
+                id : payload.id,
+                memberNickname:payload.memberNickname,
+                password : payload.password,
+                postId : payload.postId,
+                content : payload.content
+            })
+            return data.fulfillWithValue(response.data)
+        }catch (e) {
+            return data.rejectWithValue(e)
+        }
+    }
+)
+
 
 const initialState = {
     COMMENTS : [
@@ -69,6 +87,10 @@ export const commentsSlice = createSlice({
             return
         },
         [deleteCommentsAsync.fulfilled] : (state, action) => {
+            console.log(action)
+            return
+        },
+        [editCommentsAsync.fulfilled] : (state, action) => {
             console.log(action)
             return
         }
