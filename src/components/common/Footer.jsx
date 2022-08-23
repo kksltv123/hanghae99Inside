@@ -26,9 +26,13 @@ const Footer = () => {
     );
 };
 
+
 const StFooter = styled.footer`
     border-top: 1px solid ${(props) => props.theme.colors.mainColor};
     padding: 30px;
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
 `
 
 const StDl = styled.dl`

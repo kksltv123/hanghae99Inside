@@ -1,56 +1,77 @@
-import React, { useEffect } from 'react';
-import { useSelector,useDispatch } from "react-redux";
+import React from 'react';
 import styled from 'styled-components';
-import { getPostsAsync } from '../../redux/modules/postsSlice';
-import { Link } from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
+import { faImage } from "@fortawesome/free-solid-svg-icons";
 
-const MainContents = () => {
-    const dispatch = useDispatch();
+const MainContents = ({ posts, loading }) => {
+    const navigate = useNavigate();
 
-    const posts = useSelector((state) => state.posts)
- 
+    if(loading) {
+        return <h2>Loading...</h2>;
+    }
 
-    useEffect(() => {
-        dispatch(getPostsAsync())
-      
-    }, [])
-
-
-   
-    
-
-    return (
-        <>
-        <div>번호 제목 글쓴이 작성일 조회 추천</div>
-         <PostBox >
-            {posts.POST.map((post,index) => {
-                return(
-                    <Link to = {`detail/${post.postId}`} key = {index}>
-                        <div>
-                            {post.postId}
-                            {post.title}
-                            {post.memberNickname}
-                            {post.posting}
-                        </div>
-                    </Link> 
-                )
-            })}
-         </PostBox>
-        </>
-    );
+    return(
+        <div>
+            {posts.map(post => (
+                <StDiv key={post.id} onClick={() => {navigate(`/detail/${post.id}`)}}>
+                    <StLiTitle>{post.posting ? <FontAwesomeIcon icon={faImage}/> : <FontAwesomeIcon icon={faCommentDots}/>}<span>{post.title}</span></StLiTitle>
+                    <StLiAuthor>{post.memberNickname}</StLiAuthor>
+                    <StLiDate>{post.createdAt}</StLiDate>
+                    <StLiView>{post.viewCnt}</StLiView>
+                    <StLiHeart>{post.heartCnt}</StLiHeart>
+                </StDiv>
+            ))}
+        </div>
+    )
 };
+
+const StDiv= styled.div`
+    padding: 40px 20px;
+    border-bottom: 1px solid #efefef;
+    display: flex;
+    cursor: pointer;
+    &:first-child {
+        border-top: 1px solid #efefef;
+}
+`
+
+const StLiTitle = styled.div`
+    list-style: none;
+    width: 600px;
+    span {
+        margin-left: 10px;
+    }
+    svg {
+        color: #cdcdcd;
+    }
+`
+
+const StLiAuthor = styled.li`
+    list-style: none;
+    width: 100px;
+    text-align: center;
+`
+
+const StLiDate = styled.li`
+    list-style: none;
+    width: 100px;
+    text-align: center;
+`
+
+const StLiView = styled.li`
+    width: 50px;
+    list-style: none;
+    text-align: center;
+`
+
+const StLiHeart =styled.li`
+list-style: none;
+    width: 50px;
+    text-align: center;
+`
 
 export default MainContents;
 
-const PostBox = styled.div`
-    width: 800px;
-    max-width: 800px;
-    height: 300px;
-    border: 1px solid red;
-    margin-top: 70px;
- `
-
-// const PostDiv = styled.div`
-//     width:
-// `
 
