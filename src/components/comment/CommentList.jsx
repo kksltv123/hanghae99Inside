@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import { useSelector,useDispatch } from "react-redux";
 import { getCommentsAsync } from '../../redux/modules/commentsSlice';
 import { useParams } from 'react-router-dom';
+import Comment from "./Comment"
 
 
 const CommentList = () => {
     const  params = useParams();
     const  dispatch = useDispatch();
-    const comments = useSelector((state) => state.comments)
+    const comments = useSelector((state) => state.comments.COMMENTS)
     const editcm = useSelector((state) => state.comments.COMMENTS)
     console.log(editcm)
    
@@ -17,52 +18,35 @@ const CommentList = () => {
         dispatch(getCommentsAsync(params.postId))
     },[])
 
-    const [password,setPassword] = useState("")
-    const [editBtn, setEditBtn] = useState(false)
-    const [delBtn,setDelBtn] = useState(false)
-    const [idChect, setIdCheck] = useState(-1)
+    const [buttonSlelect, setButtonSelect] = useState(true)
 
-    const CheckPassword = (e) => {
-        e.preventDefault()
-        setPassword(e.target.value)
+    const Click = (i) => {
+        const newArr = Array(comments.length).fill(false);
+        newArr[i] = true
+        setButtonSelect(newArr)
     }
     
-   
     
 
 
     return (
         <CommentContainer>
-            {comments.COMMENTS.map((comment,index) => {
+            {comments.map((comment,index) => {
                 return (
-                    <div key = {comment.id}>
-                        {comment.memberNickname} |
-                        ({comment.id}) |
-                        {comment.content} |
-                        {comment.modifiedAt}|
-                        <div key ={index}>
-                        <button onClick={() => {setEditBtn(!editBtn)}}>수정</button>
-                        {editBtn === true ?
-                        <div>
-                          <input type ="text" value ={password} onChange ={CheckPassword} placeholder = "비밀번호"/>
-                          <button>수정하기</button>
-                        </div> : null}
-                        </div>
-                        <div>
-                        <button onClick={() => {setDelBtn(!delBtn)}}>삭제</button>
-                        {delBtn === true ? 
-                        <div>
-                            <input type ="text" value ={password} onChange={CheckPassword} placeholder = "비밀번호"/>
-                            <button>삭제하기</button>
-                        </div>
-                        : null}
-                        </div>
-                    </div>
+                    <Comment 
+                    key = {index}
+                    comment = {comment}
+                    Click = {Click}
+                    Selected = {buttonSlelect[index]}
+                    elementIndex = {index}
+                    />
+                        
+   
                 )
             })}
         </CommentContainer>
     );
-};
+ }
 
 export default CommentList;
 

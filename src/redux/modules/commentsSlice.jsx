@@ -36,6 +36,22 @@ export const postCommentsAsync = createAsyncThunk (
     }
 )
 
+export const deleteCommentsAsync = createAsyncThunk (
+    "commets/deleteCommentsAsync",
+    async(payload,data) => {
+        console.log(payload)
+        try{
+            const response = await axios.delete(`http://localhost:3001/COMMENTS`,{
+            password : payload.password
+        })
+            return data.fulfillWithValue(response.data)    
+        }catch (e) {
+            return data.rejectWithValue(e)
+        }
+        
+    }
+)
+
 const initialState = {
     COMMENTS : [
 
@@ -50,6 +66,10 @@ export const commentsSlice = createSlice({
     extraReducers : {
         [getCommentsAsync.fulfilled] : (state, action) => {
             state.COMMENTS = action.payload
+            return
+        },
+        [deleteCommentsAsync.fulfilled] : (state, action) => {
+            console.log(action)
             return
         }
     }
