@@ -1,13 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 const MainSideBox = () => {
+    const isLogin = localStorage.getItem('isLogin');
+    const nickname = localStorage.getItem('nickname');
+    const success = useSelector((state) => state.user.success)
+
+    useEffect(() => {
+        const getStatus = () => {
+            localStorage.getItem('isLogin');
+        }
+        getStatus()
+    }, [success]);
+
+
+
     return (
        <> 
         <SideBox>
             <LoginBox>
-                <Link to="/login">로그인 해주세요</Link>
+                {isLogin ? <p>{nickname}님 환영합니다.</p>
+                :<Link to="/login">로그인 해주세요</Link>    
+                }
             </LoginBox>
             <MyBox>
                 <button>my갤로그</button>

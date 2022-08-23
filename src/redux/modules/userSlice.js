@@ -3,7 +3,6 @@ import axios from "axios"
 
 const initialState = {
     success : null,
-    isLogin : false,
     error : null
 }
 
@@ -30,6 +29,24 @@ export const __loginDB = createAsyncThunk(
     }
 )
 
+export const __logout = createAsyncThunk(
+    "user/__logout",
+    async(data, thunkAPI) => {
+            const RefreshToken = localStorage.getItem('refreshToken');
+            const Authorization = localStorage.getItem('authorization');
+            const headers = {
+                'Content-Type': 'application/json',
+                Authorization: `${Authorization}`,
+                Refreshtoken: `${RefreshToken}`
+            }
+            const response = await axios.delete('http://54.180.153.149/api/logout', {
+                headers : headers
+            })
+            thunkAPI.fulfillWithValue(response.data)
+        }
+    
+)
+
 
 
 
@@ -40,12 +57,14 @@ export const userSlice = createSlice({
     extraReducers : {
         [__loginDB.fulfilled]: (state, action) => {
             state.success = action.payload;
-            state.isLogin = true
         },
         [__loginDB.rejected]: (state, action) => {
-            state.isLogin = false;
             state.error = action.payload;
         },
+        [__logout.fulfilled]: (state, action) => {
+            state.success = action.payload;
+        },
+
     }
 })
 
