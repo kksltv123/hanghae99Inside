@@ -10,7 +10,7 @@ export const __loginDB = createAsyncThunk(
     "user/__loginDB",
     async(data, thunkAPI) => {
         try{
-            const response = await axios.post('http://54.180.153.149/api/login', data);
+            const response = await axios.post('https://gitpher.shop/api/login', data);
             if(response.data.success === false){
                 window.alert(response.data.error.message)
                 return thunkAPI.rejectWithValue();
@@ -39,7 +39,7 @@ export const __logout = createAsyncThunk(
                 Authorization: `${Authorization}`,
                 Refreshtoken: `${RefreshToken}`
             }
-            const response = await axios.delete('http://54.180.153.149/api/logout', {
+            const response = await axios.delete('https://gitpher.shop/api/logout', {
                 headers : headers
             })
             thunkAPI.fulfillWithValue(response.data)

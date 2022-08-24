@@ -30,7 +30,7 @@ const Footer = () => {
 const StFooter = styled.footer`
     border-top: 1px solid ${(props) => props.theme.colors.mainColor};
     padding: 30px;
-    width: 1200px;
+    width: 1100px;
     display: flex;
     flex-direction: column;
 `
