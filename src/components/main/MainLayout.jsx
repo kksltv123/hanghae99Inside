@@ -18,19 +18,24 @@ const MainLayout = () => {
 
     useEffect(() => {
         const fetchPosts = async () => {
-            setLoading(true);
-            const res = await axios.get('https://gitpher.shop/api/posts')
-            setPosts(res.data);
-            setLoading(false);
+            try{
+                setLoading(true);
+                const res = await axios.get('https://gitpher.shop/api/posts')
+                setPosts(res.data);
+                setLoading(false);
+            }catch (e) {
+                console.log(e)        
+            }    
         }
-        // const fetchTopPosts = async () => {
-        //     setTopLoading(true);
-        //     const res = await axios.get('https://gitpher.shop/api/posts/top')
-        //     setTopPosts(res.data);
-        //     setTopLoading(false);
-        // }
+
+        const fetchTopPosts = async () => {
+            setTopLoading(true);
+            const res = await axios.get('https://gitpher.shop/api/posts/top')
+            setTopPosts(res.data);
+            setTopLoading(false);
+        }
         fetchPosts();
-        // fetchTopPosts();
+        fetchTopPosts();
     }, [setLoading])
 
     console.log(loading)

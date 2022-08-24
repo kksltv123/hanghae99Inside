@@ -13,16 +13,18 @@ const DetailContents = () => {
     const params = useParams()
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const posts = useSelector((state) => state.posts)
-    const post = posts.POST.find((board) => board.postId == params.postId)
+    const posts = useSelector((state) => state.posts.POST)
+    // const post = posts.POST.find((board) => board.postId === params.postId)
+
     
+
     useEffect(() => {
-        dispatch(getPostsAsync())
+        dispatch(getPostsAsync(params.postId))
     },[])
 
     const onClicDelete = (e) => {
         e.preventDefault();
-        dispatch(DeletePostsAsync(post.id))
+        dispatch(DeletePostsAsync(posts.id))
         navigate("/")
     }
 
@@ -44,15 +46,15 @@ const DetailContents = () => {
             </PeageHeader>
             <DetailContainer>
                     <TitleDiv>
-                    <h1>{post?.title}</h1><br/>
-                    <em>{post?.memberNickname} | {post?.createdAt}|조회수{post?.viewCnt} | 추천{post?.heartCnt}</em>
+                    <h1>{posts.title}</h1><br/>
+                    <em>{posts.nickname} | {posts.createAt}|조회수{posts.viewCnt} | 추천{posts.heartCnt}| 비추천{posts.unHeartCnt}</em>
                     <PostBtnBox>
                     <StyleBtn onClick={onClicDelete} >삭제</StyleBtn>
                     </PostBtnBox>
                     </TitleDiv>
                     <ContentDiv>
-                    {post?.content}
-                    <Image src = {post?.posting} />
+                    {posts?.content}
+                    <Image src = {posts?.postImg} />
                     <HeartBox>
                         <LikeBtn type="button" onClick={onLike}><img src={like} alt="" width="60" height="60"/></LikeBtn>
                         <LikeBtn type="button" onClick={onUnlike}><img src={unlike} alt="" width="60" height="60"/></LikeBtn>

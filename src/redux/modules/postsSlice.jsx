@@ -7,7 +7,7 @@ export const getPostsAsync = createAsyncThunk(
     "post/getPostsAsync",
     async (payload,data) => {
         try{
-            const response = await axios.get ("http://localhost:3001/POST")
+            const response = await axios.get (`https://gitpher.shop/api/posts/${payload}`)
            return data.fulfillWithValue(response.data)
         }catch (e) {
            return data.rejectWithValue(e)
@@ -18,7 +18,7 @@ export const getPostsAsync = createAsyncThunk(
 export const DeletePostsAsync = createAsyncThunk(
     "post/DeletePostsAsync",
     async (postId,thunkAPI) => {
-        const response = await axios.delete(`http://localhost:3001/POST/${postId}`)
+        const response = await axios.delete(`https://gitpher.shop/api/posts/${postId}`)
         console.log(response) 
     }
 )
