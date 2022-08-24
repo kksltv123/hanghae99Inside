@@ -5,31 +5,36 @@ import styled, { css } from 'styled-components';
 import axios from 'axios';
 import Pagenation from './Pagenation';
 import { Link } from 'react-router-dom';
+import TopContents from './TopContents';
 
 const MainLayout = () => {
     // 전체글
     const [posts, setPosts] = useState([]);
+    const [topPosts, setTopPosts] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [topLoading, setTopLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(10);
 
     useEffect(() => {
         const fetchPosts = async () => {
             setLoading(true);
-            const res = await axios.get('http://54.180.153.149/api/posts')
+            const res = await axios.get('https://gitpher.shop/api/posts')
             setPosts(res.data);
             setLoading(false);
         }
-
+        // const fetchTopPosts = async () => {
+        //     setTopLoading(true);
+        //     const res = await axios.get('https://gitpher.shop/api/posts/top')
+        //     setTopPosts(res.data);
+        //     setTopLoading(false);
+        // }
         fetchPosts();
-    }, [])
+        // fetchTopPosts();
+    }, [setLoading])
 
-    // 개념글
-    // const [topPosts, setTopPosts] = useState([]);
-
-    // 개념글 전체글 버튼
-    const [buttonToggle, setbuttonToggle] = useState(true)
-    console.log(buttonToggle)
+    console.log(loading)
+    console.log(topLoading)
 
     // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
@@ -39,6 +44,27 @@ const MainLayout = () => {
     // Change page
     const paginate = pageNumber => setCurrentPage(pageNumber)
 
+    // 개념글
+
+    // useEffect(() => {
+    //     const fetchTopPosts = async () => {
+    //         setLoading(true);
+    //         const res = await axios.get('https://gitpher.shop/api/posts/top')
+    //         setTopPosts(res.data);
+    //         setLoading(false);
+    //     }
+
+    //     fetchTopPosts();
+    // }, [])
+
+    const indexOfTopLastPost = currentPage * postsPerPage;
+    const indexOfTopFirstPost = indexOfTopLastPost - postsPerPage;
+    const currentTopPosts = topPosts.slice(indexOfTopFirstPost, indexOfTopLastPost);
+
+    // 개념글 전체글 버튼
+    const [buttonToggle, setbuttonToggle] = useState(true)
+
+
     return (
         <StWrap>
             {buttonToggle ?
@@ -46,8 +72,8 @@ const MainLayout = () => {
                     <h3>항해 전체글</h3>
                     <StTapDiv>
                         <StInnerDiv>
-                            <StTap1 onClick={() => setbuttonToggle(true)}>전체글</StTap1>
-                            <StTap2 onClick={() => setbuttonToggle(false)}>개념글</StTap2>
+                            <StTap1 onClick={() => setbuttonToggle(true)} buttonToggle={buttonToggle}>전체글</StTap1>
+                            <StTap2 onClick={() => setbuttonToggle(false)} buttonToggle={buttonToggle}>개념글</StTap2>
                         </StInnerDiv>
                         <Link to="/create"><StTap3>글쓰기</StTap3></Link>
                     </StTapDiv>
@@ -60,7 +86,6 @@ const MainLayout = () => {
                     </StGelleryHeader>
                     <MainContents posts={currentPosts} loading={loading} />
                     <Pagenation postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate} />
-                    <MainSideBox />
                 </PostsContainer>
                 :
                 <PostsContainer>
@@ -79,11 +104,11 @@ const MainLayout = () => {
                         <StLi>조회</StLi>
                         <StLi>추천</StLi>
                     </StGelleryHeader>
-                    <MainContents posts={currentPosts} loading={loading} />
-                    <Pagenation postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate} />
-                    <MainSideBox />
+                    <TopContents topPosts={currentTopPosts} loading={topLoading} />
+                    <Pagenation postsPerPage={postsPerPage} totalPosts={topPosts.length} paginate={paginate} />
                 </PostsContainer>
             }
+            <MainSideBox topPosts={currentTopPosts} loading={topLoading}/>
         </StWrap>
     )
 };
@@ -105,8 +130,8 @@ const StInnerDiv = styled.div`
 const StTap1 = styled.div`
     width: 100px;
     text-align: center;
-    background-color: ${(props) => props.theme.colors.mainColor};
-    color: #fff;
+    background-color: ${props => (props.buttonToggle ? '#3b4890' : '#efefef')};
+    color: ${props => (props.buttonToggle ? '#fff' : '#333')};
     padding: 10px;
     cursor: pointer;
 `
@@ -114,7 +139,8 @@ const StTap2 = styled.div`
     width: 100px;
     text-align: center;
     padding: 10px;
-    background-color: #efefef;
+    background-color: ${props => (props.buttonToggle ? '#efefef' : '#3b4890')};
+    color: ${props => (props.buttonToggle ? '#333' : '#fff')};
     cursor: pointer;
 `
 const StTap3 = styled.div`

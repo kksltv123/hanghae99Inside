@@ -5,17 +5,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 
-const MainContents = ({ posts, loading }) => {
+const TopContents = ({ topPosts, topLoading }) => {
     const navigate = useNavigate();
 
-    if(loading) {
+    if(topLoading) {
         return <h2>Loading...</h2>;
     }
 
     return(
         <div>
-            {posts.map(post => (
-                <StDiv key={post.postId} onClick={() => {navigate(`/detail/${post.postId}`)}}>
+            {topPosts.map(post => (
+                <StDiv key={post.postId} onClick={() => {navigate(`/detail/${post.id}`)}}>
                     <StLiTitle>{post.posting ? <FontAwesomeIcon icon={faImage}/> : <FontAwesomeIcon icon={faCommentDots}/>}<span>{post.title}</span></StLiTitle>
                     <StLiAuthor>{post.nickname}</StLiAuthor>
                     <StLiDate>{post.createAt.slice(0,7) + post.createAt.slice(7,10)}</StLiDate>
@@ -72,6 +72,4 @@ list-style: none;
     text-align: center;
 `
 
-export default MainContents;
-
-
+export default TopContents;

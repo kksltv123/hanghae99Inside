@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import SideTopContents from './SideTopContents';
 
-const MainSideBox = () => {
+const MainSideBox = ({topPosts, loading}) => {
     const isLogin = localStorage.getItem('isLogin');
     const nickname = localStorage.getItem('nickname');
     const success = useSelector((state) => state.user.success)
@@ -18,6 +18,10 @@ const MainSideBox = () => {
     }, [success]);
 
 
+    const sliceTopPosts = topPosts.slice(1, 8);
+
+
+
 
     return (
        <> 
@@ -28,11 +32,13 @@ const MainSideBox = () => {
                 }
             </LoginBox>
             <MyBox>
-                <button>my갤로그</button>
+                {isLogin ? <Link to="/mypage"><button>my갤로그</button></Link>
+                :null
+                }
             </MyBox>
         </SideBox>
         <BestPost>
-            개념글
+            <SideTopContents topPosts={sliceTopPosts} loading={loading}/>
         </BestPost>
         </> 
     );
