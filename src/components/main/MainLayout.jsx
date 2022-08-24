@@ -23,14 +23,14 @@ const MainLayout = () => {
             setPosts(res.data);
             setLoading(false);
         }
-        // const fetchTopPosts = async () => {
-        //     setTopLoading(true);
-        //     const res = await axios.get('https://gitpher.shop/api/posts/top')
-        //     setTopPosts(res.data);
-        //     setTopLoading(false);
-        // }
+        const fetchTopPosts = async () => {
+            setTopLoading(true);
+            const res = await axios.get('https://gitpher.shop/api/posts/top')
+            setTopPosts(res.data);
+            setTopLoading(false);
+        }
         fetchPosts();
-        // fetchTopPosts();
+        fetchTopPosts();
     }, [setLoading])
 
     console.log(loading)
@@ -44,18 +44,6 @@ const MainLayout = () => {
     // Change page
     const paginate = pageNumber => setCurrentPage(pageNumber)
 
-    // 개념글
-
-    // useEffect(() => {
-    //     const fetchTopPosts = async () => {
-    //         setLoading(true);
-    //         const res = await axios.get('https://gitpher.shop/api/posts/top')
-    //         setTopPosts(res.data);
-    //         setLoading(false);
-    //     }
-
-    //     fetchTopPosts();
-    // }, [])
 
     const indexOfTopLastPost = currentPage * postsPerPage;
     const indexOfTopFirstPost = indexOfTopLastPost - postsPerPage;
