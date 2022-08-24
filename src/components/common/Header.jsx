@@ -98,7 +98,7 @@ const StButton = styled.button`
 const StTitle = styled.h1`
     font-size: ${(props) => props.theme.fontsizes.subtitle};
     color: #000;
-    font-style: italic;
+    font-family: "Serpentine_ICG_Oblique";
 `
 
 const StBottomHeader = styled.div`

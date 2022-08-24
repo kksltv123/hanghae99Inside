@@ -10,7 +10,7 @@ const CreateGallery = () => {
 
     return (
         <div>
-          확인  
+          확인
         </div>
     );
 };

@@ -11,12 +11,12 @@ const CommentList = () => {
     const  dispatch = useDispatch();
     const comments = useSelector((state) => state.comments.COMMENTS)
     const editcm = useSelector((state) => state.comments.COMMENTS)
-    console.log(editcm)
+
    
 
     useEffect(() => {
         dispatch(getCommentsAsync(params.postId))
-    },[])
+    },[dispatch])
 
     const [buttonSlelect, setButtonSelect] = useState(true)
 
@@ -52,7 +52,7 @@ export default CommentList;
 
 const CommentContainer = styled.div`
     width : 1000px;
-     height: 300px;
-     border: 1px solid black;
+     border-bottom: 2.5px solid #3b4890;
+     border-top: 2.5px solid #3b4890;
      margin: 0 auto;
 `
