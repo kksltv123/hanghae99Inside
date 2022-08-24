@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MainContents from './MainContents';
 import MainSideBox from './MainSideBox';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import axios from 'axios';
 import Pagenation from './Pagenation';
 import { Link } from 'react-router-dom';
@@ -16,30 +16,32 @@ const MainLayout = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(10);
 
+    const urlPosts = process.env.REACT_APP_POSTS
+    const urlTopPosts = process.env.REACT_APP_POSTS_TOP
+
     useEffect(() => {
         const fetchPosts = async () => {
-            try{
-                setLoading(true);
-                const res = await axios.get('https://gitpher.shop/api/posts')
-                setPosts(res.data);
-                setLoading(false);
-            }catch (e) {
-                console.log(e)        
-            }    
-        }
 
+           
+
+            setLoading(true);
+            const res = await axios.get(urlPosts)
+            setPosts(res.data);
+            setLoading(false);
+        }
         const fetchTopPosts = async () => {
             setTopLoading(true);
-            const res = await axios.get('https://gitpher.shop/api/posts/top')
+            const res = await axios.get(urlTopPosts)
             setTopPosts(res.data);
             setTopLoading(false);
         }
         fetchPosts();
         fetchTopPosts();
-    }, [setLoading])
+    }, [])
 
     console.log(loading)
     console.log(topLoading)
+    console.log(urlPosts)
 
     // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
@@ -49,18 +51,6 @@ const MainLayout = () => {
     // Change page
     const paginate = pageNumber => setCurrentPage(pageNumber)
 
-    // 개념글
-
-    // useEffect(() => {
-    //     const fetchTopPosts = async () => {
-    //         setLoading(true);
-    //         const res = await axios.get('https://gitpher.shop/api/posts/top')
-    //         setTopPosts(res.data);
-    //         setLoading(false);
-    //     }
-
-    //     fetchTopPosts();
-    // }, [])
 
     const indexOfTopLastPost = currentPage * postsPerPage;
     const indexOfTopFirstPost = indexOfTopLastPost - postsPerPage;
