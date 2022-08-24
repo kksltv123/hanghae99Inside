@@ -8,13 +8,13 @@ const CommentCreate = () => {
     const params = useParams();
     const dispatch = useDispatch();
     const id = Number(params.postId)
-    const [memberNickname ,setMemberNickname] = useState("")
+    const [nickname,setNickname] = useState("")
     const [password ,setPassword] = useState("")
     const [content, setContent] = useState("")
 
     const NicknameChange = (e) => {
         e.preventDefault();
-        setMemberNickname(e.target.value)
+        setNickname(e.target.value)
     }
 
     const PasswordChange = (e) => {
@@ -29,7 +29,7 @@ const CommentCreate = () => {
 
     const submitComment = (e) => {
         e.preventDefault();
-        if(memberNickname === ""){
+        if(setNickname === ""){
             alert("닉네임을 입력하세요")
             return
         }else if(password === "") {
@@ -41,12 +41,12 @@ const CommentCreate = () => {
         }
         dispatch(postCommentsAsync({
             postId : id,
-            memberNickname : memberNickname,
+            nickname : nickname,
             content : content,
             password : password,
         }))
         dispatch(getCommentsAsync(params.postId))
-        setMemberNickname("")
+        setNickname("")
         setPassword("")
         setContent("")
     }
@@ -58,7 +58,7 @@ const CommentCreate = () => {
             <form onSubmit={submitComment}>
                 <NicPassDiv>
                 <div>
-                <NicPassinput type="tetx" placeholder ="닉네임" value={memberNickname} onChange={NicknameChange} />
+                <NicPassinput type="tetx" placeholder ="닉네임" value={nickname} onChange={NicknameChange} />
                 </div>
                 <div>
                 <NicPassinput type="tetx" placeholder ="비밀번호" value={password} onChange={PasswordChange} />

@@ -21,6 +21,9 @@ const MainLayout = () => {
 
     useEffect(() => {
         const fetchPosts = async () => {
+
+           
+
             setLoading(true);
             const res = await axios.get(urlPosts)
             setPosts(res.data);

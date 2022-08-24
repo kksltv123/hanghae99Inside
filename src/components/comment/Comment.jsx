@@ -39,7 +39,7 @@ const Comment = ({comment, Click, Selected,elementIndex}) => {
         
         dispatch(editCommentsAsync({
             id : comment.id,
-            memberNickname:comment.memberNickname,
+            nickname:comment.nickname,
             password : comment.password,
             postId : comment.postId,
             content : comments
@@ -49,7 +49,7 @@ const Comment = ({comment, Click, Selected,elementIndex}) => {
         dispatch(getCommentsAsync(postId))
     }
 
-    const commentowner = comment.memberNickname
+    const commentowner = comment.nickname
 
     const onDelete = (comment_id) => {
         if(comment.password === password) {
@@ -67,8 +67,8 @@ const Comment = ({comment, Click, Selected,elementIndex}) => {
             <UserBox>
                 <NicSpan>
                 <EmTag>
-                {comment.memberNickname}
-                 ({comment.id})
+                {comment.nickname}
+                 ({comment.createdAt})
                  </EmTag>
                  </NicSpan>
                  {comment.content}

@@ -4,8 +4,9 @@ import axios from "axios"
 export const getCommentsAsync = createAsyncThunk (
     "comments/getCommentsAsync",
     async (postId,data) => {
+        console.log(postId)
         try {
-            const response = await axios.get(`http://localhost:3001/COMMENTS?postId=${postId}`)
+            const response = await axios.get(`https://gitpher.shop/api/comments?postId=${postId}`)
             return data.fulfillWithValue(response.data)
         } catch (e) {
             return data.rejectWithValue(e)
@@ -19,9 +20,9 @@ export const postCommentsAsync = createAsyncThunk (
     async (payload,data) => {
         console.log(payload)
         try{
-            const response = await axios.post(`http://localhost:3001/COMMENTS`,{
+            const response = await axios.post(`https://gitpher.shop/api/comments`,{
                 postId : payload.postId,
-                memberNickname : payload.memberNickname,
+                nickname : payload.nickname,
                 content : payload.content,
                 password : payload.password 
 
