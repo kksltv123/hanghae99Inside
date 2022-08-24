@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MainContents from './MainContents';
 import MainSideBox from './MainSideBox';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import axios from 'axios';
 import Pagenation from './Pagenation';
 import { Link } from 'react-router-dom';
