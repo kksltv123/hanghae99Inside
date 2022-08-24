@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import styled from 'styled-components';
-import { connect, useDispatch } from 'react-redux';
+import {  useDispatch,useSelector } from 'react-redux';
 import { useParams } from "react-router-dom"
 import { deleteCommentsAsync,editCommentsAsync, getCommentsAsync } from '../../redux/modules/commentsSlice';
 
@@ -10,8 +10,10 @@ const Comment = ({comment, Click, Selected,elementIndex}) => {
     const [editNum, setEditNum] = useState(-1)
     const [comments, setComments] = useState("")
     const [password, setPassword] = useState("")
-    const { postId } = useParams()
+
+    const params = useParams()
     const black_pattern = /^s+|\s+$/g;
+    const susccess = useSelector((state) => state.comments.susccess)
     
 
     const commetChangeHandler = (e) => {
@@ -26,6 +28,7 @@ const Comment = ({comment, Click, Selected,elementIndex}) => {
 
     const onEditComment = (comment_id) => {
         
+        
        if(password !== comment.password) {
             alert("비밀번호가 틀립니다")
             return
@@ -36,29 +39,34 @@ const Comment = ({comment, Click, Selected,elementIndex}) => {
         alert("Only spaces were entered in the comments")
         return
         }
-        
-        dispatch(editCommentsAsync({
+        const edit_comments = {
             id : comment.id,
             nickname:comment.nickname,
             password : comment.password,
             postId : comment.postId,
             content : comments
-        }))
+        }
+        dispatch(editCommentsAsync(edit_comments))
         setEditNum();
         setComments("")
-        dispatch(getCommentsAsync(postId))
     }
+
+    useEffect(() => {
+        dispatch(getCommentsAsync(params.postId))
+    },[susccess])
 
     const commentowner = comment.nickname
 
     const onDelete = (comment_id) => {
         if(comment.password === password) {
-            dispatch(deleteCommentsAsync(comment.id))
+            dispatch(deleteCommentsAsync({
+                id : comment.id,
+                password : password
+            }))
         }else {
             alert("비밀번호가 틀립니다")
         }
-        dispatch(getCommentsAsync(postId))
-        
+        dispatch(getCommentsAsync(params.postId))
     }
 
      return (

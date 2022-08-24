@@ -42,7 +42,10 @@ export const deleteCommentsAsync = createAsyncThunk (
     async(payload,data) => {
         console.log(payload)
         try{
-            const response = await axios.delete(`http://localhost:3001/COMMENTS/${payload}`)
+            const response = await axios.delete(`https://gitpher.shop/api/comments/${payload.id}`,{
+                id : payload.id,
+                password : payload.password
+            })
             return data.fulfillWithValue(response.data)    
         }catch (e) {
             return data.rejectWithValue(e)
@@ -56,13 +59,14 @@ export const editCommentsAsync = createAsyncThunk (
     async(payload,data) => {
         console.log(payload)
         try{
-            const response = await axios.put(`http://localhost:3001/COMMENTS/${payload.id}`,{
+            const response = await axios.put(`https://gitpher.shop/api/comments/${payload.id}`,{
                 id : payload.id,
-                memberNickname:payload.memberNickname,
+                nickname:payload.nickname,
                 password : payload.password,
                 postId : payload.postId,
                 content : payload.content
             })
+            console.log(response.data)
             return data.fulfillWithValue(response.data)
         }catch (e) {
             return data.rejectWithValue(e)
@@ -74,7 +78,11 @@ export const editCommentsAsync = createAsyncThunk (
 const initialState = {
     COMMENTS : [
 
-    ]
+    ],
+    susccess : {
+
+    }
+
 }
 
 
@@ -92,8 +100,11 @@ export const commentsSlice = createSlice({
             return
         },
         [editCommentsAsync.fulfilled] : (state, action) => {
-            console.log(action)
+            state.susccess = action.payload
             return
+        },
+        [postCommentsAsync.fulfilled] : (state, action) => {
+            state.susccess = action.payload
         }
     }
 })
