@@ -390,7 +390,7 @@
       "memberNickname": "최소 거북",
       "password": "1111",
       "postId": 1,
-      "content": "ㅁㄴㅇㅍ"
+      "content": "eded"
     },
     {
       "id": 3,
@@ -422,6 +422,48 @@
       "content": "ㅁㅇㄹ",
       "password": "1111",
       "id": 4
+    },
+    {
+      "postId": 1,
+      "memberNickname": "주니어개발자",
+      "content": "주니어 개발자가 잠을자...?",
+      "password": "1234",
+      "id": 5
+    },
+    {
+      "postId": 1,
+      "memberNickname": "css는 힘들어",
+      "content": "나만힘들어 나만",
+      "password": "1234",
+      "id": 6
+    },
+    {
+      "postId": 1,
+      "memberNickname": "힘들러유",
+      "content": "ㅁㅇㄹ",
+      "password": "1234",
+      "id": 7
+    },
+    {
+      "postId": 1,
+      "memberNickname": "ㅁㄻㄻ",
+      "content": "ㅁㄴㅇㄹ",
+      "password": "1234",
+      "id": 8
+    },
+    {
+      "postId": 1,
+      "memberNickname": "그대가 날",
+      "content": "떠나간단 말 만 하지않는다ㅁ묘오오온~",
+      "password": "1234",
+      "id": 9
+    },
+    {
+      "postId": 2,
+      "memberNickname": "테스트에요",
+      "content": "쏴리질러~",
+      "password": "1234",
+      "id": 10
     }
   ]
 }

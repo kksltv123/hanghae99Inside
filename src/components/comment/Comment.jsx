@@ -57,67 +57,76 @@ const Comment = ({comment, Click, Selected,elementIndex}) => {
         }else {
             alert("비밀번호가 틀립니다")
         }
+        dispatch(getCommentsAsync(postId))
         
     }
 
      return (
-        <>
+        <>  
+            <CommentBox>
+            <UserBox>
+                <NicSpan>
+                <EmTag>
+                {comment.memberNickname}
+                 ({comment.id})
+                 </EmTag>
+                 </NicSpan>
+                 {comment.content}
+            </UserBox>
+            <DelBox>
             {commentNum !== comment.id ? (
-                <StMemeComment>
                     <div>
-                        <div>
-                            {comment.memberNickname}
-                            ({comment.id})
-                            {comment.content}
-                        </div>
+                        
                         <div>
                             {/* <button  commentowner = {commentowner} onClick = {() => setCommentNum(comment.id) } >수정</button> */}
-                            <button commentowner = {commentowner} onClick = {() => setCommentNum(comment.id) }>삭제</button>
+                            <StyleBtn commentowner = {commentowner} onClick = {() => setCommentNum(comment.id) }>삭제</StyleBtn>
                         </div>
                     </div>
-                </StMemeComment>
             ) : (
-                <StMemeComment>
                     <div>
-                        <input 
+                        <PassInput 
                         type= "text" 
                         placeholder = "비밀번호" 
                         maxLength={30} 
                         value ={password}
                         onChange = {passwordChangeHandler}/>
-                        <div>
-                            <button onClick={onDelete}>삭제완료</button>
-                            <button type='button' onClick={() => setCommentNum(-1)}>취소</button>
-                        </div>
+                        <DeleteDoneDiv>
+                            <StyleBtn onClick={onDelete}>삭제완료</StyleBtn>
+                            <StyleBtn type='button' onClick={() => setCommentNum(-1)}>취소</StyleBtn>
+                        </DeleteDoneDiv>
                     </div>
-                </StMemeComment>
             )}
+            </DelBox>
+            <EditBtn>
             {editNum !== comment.id ? (
                 <div>
-                    <button  commentowner = {commentowner} onClick = {() => setEditNum(comment.id) } >수정</button>
+                    <StyleBtn  commentowner = {commentowner} onClick = {() => setEditNum(comment.id) } >수정</StyleBtn>
                 </div>
             ):(
             <div>
                 <div>
-                    <input
+                    <PassInput
                     type = "text"
                     placeholder = "비밀번호"
                     maxLength = {30}
                     value = {password}
                     onChange = {passwordChangeHandler}/>
-                    <input
+                    <EditInput
                     type= "text"
                     placeholder = "수정할 내용을 입력해 주세요"
                     maxLength = {30}
                     value = {comments}
                     onChange ={commetChangeHandler}/>
                 </div>
-                <div>
-                    <button onClick={onEditComment}>수정완료</button>
-                    <button type='button' onClick={() => setEditNum(-1)}>취소</button>
-                </div>
+                <EditDoneDIv>
+                    <StyleBtn onClick={onEditComment}>수정완료</StyleBtn>
+                    <StyleBtn type='button' onClick={() => setEditNum(-1)}>취소</StyleBtn>
+                </EditDoneDIv>
             </div>   
             )}
+            </EditBtn>
+        </CommentBox> 
+            
          
         </>
     );
@@ -125,14 +134,81 @@ const Comment = ({comment, Click, Selected,elementIndex}) => {
 
 export default Comment;
 
-const StMemeComment = styled.div`
-    display: flex;
+const CommentBox = styled.div`
     flex-direction: column;
-    padding: 10px;
-    border-bottom: 1px solid #efefef;
-    div {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 5px;
-    }
+    height: 50px;
+    border-bottom: 1px solid Lightgray;
+    border-top: 1px solid Lightgray;
+    margin: 10px auto;
+`
+
+const UserBox = styled.div`
+    float: left;
+    max-width: 900px;
+`
+
+const DelBox = styled.div`
+    float: right;
+`
+const EditBtn = styled.div`
+    float: right;
+`
+
+const NicSpan = styled.span`
+    font-size: 14px;
+    color: #777;
+    vertical-align: top;
+`
+const EmTag = styled.em`
+    max-width: 80px;
+    padding-right: 50px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: top;
+    font-style: normal;
+`
+
+const EditDoneDIv = styled.div`
+    overflow: hidden;
+    position: absolute;
+    width: 130px;
+    height: 25px;
+    margin: 0 233px;
+`
+const DeleteDoneDiv = styled.div`
+     overflow: hidden;
+    position: absolute;
+    width: 130px;
+    height: 25px;
+    margin: 0 15px;
+`
+
+
+const StyleBtn = styled.button`
+    width: 65px;
+    height: 25px;
+    background-color: #3b4890;
+    border-color: #29367c;
+    color: #fff
+`
+
+const PassInput = styled.input`
+    width: 129px;
+    height: 20px;
+    line-height: 34px;
+    padding: 0 5px;
+    background: #fff;
+    font-size: 14px;
+    border: 3px solid #3b4890 ;
+`
+
+const EditInput = styled.input`
+    width: 200px;
+    height: 20px;
+    line-height: 34px;
+    padding: 0 5px;
+    background: #fff;
+    font-size: 14px;
+    border: 3px solid #3b4890
 `
