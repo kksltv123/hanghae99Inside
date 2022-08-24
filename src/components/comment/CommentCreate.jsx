@@ -11,6 +11,7 @@ const CommentCreate = () => {
     const [nickname,setNickname] = useState("")
     const [password ,setPassword] = useState("")
     const [content, setContent] = useState("")
+    
 
     const NicknameChange = (e) => {
         e.preventDefault();
@@ -45,7 +46,7 @@ const CommentCreate = () => {
             content : content,
             password : password,
         }))
-        dispatch(getCommentsAsync(params.postId))
+        dispatch(getCommentsAsync(id))
         setNickname("")
         setPassword("")
         setContent("")

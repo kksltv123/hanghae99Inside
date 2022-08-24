@@ -11,12 +11,12 @@ const CommentList = () => {
     const  dispatch = useDispatch();
     const comments = useSelector((state) => state.comments.COMMENTS)
     const editcm = useSelector((state) => state.comments.COMMENTS)
-
+    const susccess = useSelector((state) => state.comments.susccess)
    
 
     useEffect(() => {
         dispatch(getCommentsAsync(params.postId))
-    },[dispatch])
+    },[dispatch,susccess])
 
     const [buttonSlelect, setButtonSelect] = useState(true)
 
