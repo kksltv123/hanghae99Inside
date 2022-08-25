@@ -131,14 +131,6 @@ Header를 통해 들어오는 Token 및 request 값을 바탕으로 올바르지
 [API 설계 한눈에 보기](https://www.notion.so/0bba5380d0f941a68618da529d068091)
 
 
-
-## 🔧 ERD 설계
-
-
-![HangHaeInside](https://user-images.githubusercontent.com/108355379/186662819-5a5954e3-879c-43f2-b977-361291095177.png)
-
-
-
 ## **🐛 트러블 슈팅**
 
 ### 프론트
@@ -146,7 +138,6 @@ https://kownyoungjun.tistory.com/26
 
 ### 백앤드
 [트러블 슈팅 한눈에 보기](https://www.notion.so/3ba6b1c3b2bb409dbe9fc26562616120)
-
 
 
 ## 📝 Git Commit Message Rule
