@@ -6,11 +6,14 @@ const initialState = {
     error : null
 }
 
+const urlLogin = process.env.REACT_APP_LOGIN
+const urlLogout = process.env.REACT_APP_LOGOUT
+
 export const __loginDB = createAsyncThunk(
     "user/__loginDB",
     async(data, thunkAPI) => {
         try{
-            const response = await axios.post('https://gitpher.shop/api/login', data);
+            const response = await axios.post(urlLogin, data);
             if(response.data.msg === true){
                 localStorage.setItem('authorization', response.headers.authorization);
                 localStorage.setItem('refreshToken', response.headers.refreshtoken);
@@ -37,7 +40,7 @@ export const __logout = createAsyncThunk(
                 Authorization: `${Authorization}`,
                 Refreshtoken: `${RefreshToken}`
             }
-            const response = await axios.delete('https://gitpher.shop/api/logout', {
+            const response = await axios.delete(urlLogout, {
                 headers : headers
             })
             thunkAPI.fulfillWithValue(response.data.memberId)

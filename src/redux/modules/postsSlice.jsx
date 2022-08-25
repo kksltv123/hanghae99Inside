@@ -1,13 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 
+// REACT_APP_POSTS = "https://gitpher.shop/api/posts"
 
+const urlPosts = process.env.REACT_APP_POSTS
 
 export const getPostsAsync = createAsyncThunk(
     "post/getPostsAsync",
     async (payload,data) => {
         try{
-            const response = await axios.get (`https://gitpher.shop/api/posts/${payload}`)
+            const response = await axios.get (`${urlPosts}/${payload}`)
            return data.fulfillWithValue(response.data)
         }catch (e) {
            return data.rejectWithValue(e)
@@ -18,7 +20,7 @@ export const getPostsAsync = createAsyncThunk(
 export const DeletePostsAsync = createAsyncThunk(
     "post/DeletePostsAsync",
     async (postId,thunkAPI) => {
-        const response = await axios.delete(`https://gitpher.shop/api/posts/${postId}`)
+        const response = await axios.delete(`${urlPosts}/${postId}`)
         console.log(response) 
     }
 )

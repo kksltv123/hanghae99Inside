@@ -23,6 +23,8 @@ const TitleInput = styled.input`
   width: 100%;
 `;
 
+// REACT_APP_CREATE = 'https://gitpher.shop/api/posts'
+const urlCreate = process.env.REACT_APP_CREATE
 
 
 const Editor = () => {
@@ -42,7 +44,7 @@ const onSubmitHandler = async (e) => {
           Authorization: `${Authorization}`,
           Refreshtoken: `${Refreshtoken}`
       }
-      const res = await axios.post('https://gitpher.shop/api/posts', formData, {headers: headers} )
+      const res = await axios.post(urlCreate, formData, {headers: headers} )
       console.log(res)
   } catch (err) {
       console.log(err);

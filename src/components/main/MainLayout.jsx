@@ -18,6 +18,7 @@ const MainLayout = () => {
 
     const urlPosts = process.env.REACT_APP_POSTS
     const urlTopPosts = process.env.REACT_APP_POSTS_TOP
+    console.log(urlPosts)
 
     useEffect(() => {
         const fetchPosts = async () => {

@@ -12,11 +12,14 @@ const MyLayout = () => {
     const [loading, setLoading] = useState(false);
     const [posts, setPosts] = useState([]);
 
+    const urlMyinfo = process.env.REACT_APP_MYINFO
+
+
     useEffect(() => {
         const Authorization = localStorage.getItem('authorization');
         const fetchPosts = async () => {   
             setLoading(true);
-            const res = await axios.get("https://gitpher.shop/api/myinfo",{
+            const res = await axios.get(urlMyinfo,{
                 headers:{
                     'Content-Type': 'application/json',
                     Authorization: `${Authorization}`,
