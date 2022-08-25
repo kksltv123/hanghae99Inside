@@ -13,7 +13,6 @@ const SignIn = ({ SignInUpToggle }) => {
 
     const onSubmit = (data) => {
         dispatch(__loginDB(data))
-        window.alert("환영합니다.")
         navigate("/main")
 
     }

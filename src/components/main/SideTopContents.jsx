@@ -54,6 +54,9 @@ const StLi = styled.li`
     padding: 8px 0px;
     cursor: pointer;
     color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     &:hover {
         color: ${(props) => props.theme.colors.mainColor};
     }

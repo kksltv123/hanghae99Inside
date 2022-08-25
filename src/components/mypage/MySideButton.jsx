@@ -8,8 +8,8 @@ const MySideButton = ({buttonToggle, setbuttonToggle}) => {
     return (
         <StDiv>
             <StTap1 onClick={() => setbuttonToggle(1)} buttonToggle={buttonToggle}>홈</StTap1>
-            <StTap2 onClick={() => setbuttonToggle(2)} buttonToggle={buttonToggle}>게시글</StTap2>
-            <StTap3 onClick={() => setbuttonToggle(3)} buttonToggle={buttonToggle}>댓글</StTap3>
+            {/* <StTap2 onClick={() => setbuttonToggle(2)} buttonToggle={buttonToggle}>게시글</StTap2>
+            <StTap3 onClick={() => setbuttonToggle(3)} buttonToggle={buttonToggle}>댓글</StTap3> */}
         </StDiv>
     );
 };

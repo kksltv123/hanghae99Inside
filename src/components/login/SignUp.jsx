@@ -17,7 +17,7 @@ const SignUp = ({SignInUpToggle}) => {
         try {
             const email = watch("email")
             const postEmail = { email }
-            const response = await axios.post('http://54.180.153.149/api/emailCheck',postEmail);
+            const response = await axios.post('https://gitpher.shop/api/emailCheck',postEmail);
             // 중복 x = false, 중복 o: true,
             console.log(response.data)
             if(response.data === false){
@@ -39,7 +39,7 @@ const SignUp = ({SignInUpToggle}) => {
         try {
             const nickname = watch("nickname")
             const postNickname = { nickname }
-            const response = await axios.post('http://54.180.153.149/api/nicknameCheck',postNickname);
+            const response = await axios.post('https://gitpher.shop/api/nicknameCheck',postNickname);
             console.log(response.data)
             // 중복 x = false, 중복 o: true,
             if(response.data === false){

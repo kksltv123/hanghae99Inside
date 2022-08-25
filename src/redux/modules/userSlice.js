@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 
 const initialState = {
-    success : null,
+    success : false,
     error : null
 }
 
@@ -11,19 +11,16 @@ export const __loginDB = createAsyncThunk(
     async(data, thunkAPI) => {
         try{
             const response = await axios.post('https://gitpher.shop/api/login', data);
-            if(response.data.success === false){
-                window.alert(response.data.error.message)
-                return thunkAPI.rejectWithValue();
-            }else{
-                console.log(response.headers)
+            if(response.data.msg === true){
                 localStorage.setItem('authorization', response.headers.authorization);
                 localStorage.setItem('refreshToken', response.headers.refreshtoken);
                 localStorage.setItem('nickname', response.data.nickname);
                 localStorage.setItem('isLogin', true);
-                return thunkAPI.fulfillWithValue(response.data)
+                console.log(response.data.msg)
+                return thunkAPI.fulfillWithValue(response.data.msg)
             }
-
         } catch(error) {
+            window.alert("아이디 또는 비밀번호를 확인해 주세요")
             return thunkAPI.rejectWithValue(error);
         }
     }
@@ -32,6 +29,7 @@ export const __loginDB = createAsyncThunk(
 export const __logout = createAsyncThunk(
     "user/__logout",
     async(data, thunkAPI) => {
+        try {
             const RefreshToken = localStorage.getItem('refreshToken');
             const Authorization = localStorage.getItem('authorization');
             const headers = {
@@ -42,7 +40,10 @@ export const __logout = createAsyncThunk(
             const response = await axios.delete('https://gitpher.shop/api/logout', {
                 headers : headers
             })
-            thunkAPI.fulfillWithValue(response.data)
+            thunkAPI.fulfillWithValue(response.data.memberId)
+        }catch (error) {
+            thunkAPI.rejectWithValue(error)
+        }
         }
     
 )
@@ -63,6 +64,9 @@ export const userSlice = createSlice({
         },
         [__logout.fulfilled]: (state, action) => {
             state.success = action.payload;
+        },
+        [__logout.rejected]: (state, action) => {
+            state.error = action.payload;
         },
 
     }

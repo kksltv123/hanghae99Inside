@@ -39,10 +39,6 @@ const MainLayout = () => {
         fetchTopPosts();
     }, [])
 
-    console.log(loading)
-    console.log(topLoading)
-    console.log(urlPosts)
-
     // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;

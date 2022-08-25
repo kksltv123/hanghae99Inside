@@ -18,7 +18,7 @@ const MainSideBox = ({topPosts, loading}) => {
     }, [success]);
 
 
-    const sliceTopPosts = topPosts.slice(1, 8);
+    const sliceTopPosts = topPosts.slice(0, 8);
 
 
 

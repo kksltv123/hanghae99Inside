@@ -11,7 +11,7 @@ const Create = () => {
     <Header />
     <Responsive>
       <CreateGallery />
-      <CreateActionButton />
+      {/* <CreateActionButton /> */}
     </Responsive>
     </>
     
