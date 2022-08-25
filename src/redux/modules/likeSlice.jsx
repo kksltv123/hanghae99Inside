@@ -8,8 +8,16 @@ export const postLikeAsync = createAsyncThunk(
     async(payload,data) => {
         console.log(payload)
         try{
-            const response = await axios.post(`api/pots/like/${payload}`)
-            return data.fulfillWithValue(response.data)
+            const Refreshtoken = localStorage.getItem('refreshToken')
+            const Authorization = localStorage.getItem('authorization')
+            const headers = {
+                'Content-Type' : 'application/json',
+                Authorization : `${Authorization}`,
+                Refreshtoken : `${Refreshtoken}`
+            }
+            const response = await axios.post(`https://gitpher.shop/api/posts/like/${payload}`,{},{headers : headers})
+            console.log(response)
+            return data.fulfillWithValue(response.data.postId)
         }catch (e) {
             return data.rejectWithValue
         }
@@ -21,7 +29,14 @@ export const postUnlikeAsync = createAsyncThunk (
     async(payload,data) => {
         console.log(payload)
         try{
-            const response = await axios.post(`api/pots/dislike/${payload}`)
+            const Refreshtoken = localStorage.getItem('refreshToken')
+            const Authorization = localStorage.getItem('authorization')
+            const headers = {
+                'Content-Type' : 'application/json',
+                Authorization : `${Authorization}`,
+                Refreshtoken : `${Refreshtoken}`
+            }
+            const response = await axios.post(`https://gitpher.shop/api/posts/dislike/${payload}`,{},{headers :headers})
             return data.fulfillWithValue(response.data)
         }catch (e) {
             return data.rejectWithValue
@@ -29,13 +44,27 @@ export const postUnlikeAsync = createAsyncThunk (
     } 
 )
 
-const initialState = {}
+const initialState = {
+    susccess : {
+
+    }
+}
 
 export const likeSlice = createSlice({
     name:"like",
     initialState,
     reducer: {},
-    extraReducers: {}
+    extraReducers: {
+        [postLikeAsync.fulfilled] : (state, action) => {
+            console.log(action.payload)
+            state.susccess = action.payload
+            return
+        },
+        [postUnlikeAsync.fulfilled] : (state, action) => {
+            state.susccess = action.payload
+            return
+        }
+    }
 })
 
 export const {} =likeSlice.actions;
