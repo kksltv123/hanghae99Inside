@@ -51,7 +51,7 @@ const Comment = ({comment, Click, Selected,elementIndex}) => {
         setComments("")
     }
 
-    useEffect(() => {
+     useEffect(() => {
         dispatch(getCommentsAsync(params.postId))
     },[susccess])
 
