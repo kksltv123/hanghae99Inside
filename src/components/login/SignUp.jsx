@@ -58,6 +58,7 @@ const SignUp = ({SignInUpToggle}) => {
             }
         } catch(error) {return;}
     }
+    const registert = process.env.REACT_APP_REGISTER
 
     // 회원가입 제출
     const onSubmit = async(data) => {
@@ -66,7 +67,7 @@ const SignUp = ({SignInUpToggle}) => {
             return
         }
 
-        await axios.post('http://54.180.153.149/api/register', data)
+        await axios.post(registert, data)
         alert('회원가입 되셨습니다 축하합니다')
         SignInUpToggle();
     }
