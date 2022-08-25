@@ -6,6 +6,7 @@ import axios from 'axios';
 import Pagenation from './Pagenation';
 import { Link } from 'react-router-dom';
 import TopContents from './TopContents';
+import { useSelector } from 'react-redux';
 
 const MainLayout = () => {
     // 전체글
@@ -16,6 +17,7 @@ const MainLayout = () => {
     const [topLoading, setTopLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(10);
+    const deldone =useSelector((state) => state.posts.susccess)
 
     const urlPosts = process.env.REACT_APP_POSTS
     const urlTopPosts = process.env.REACT_APP_POSTS_TOP
@@ -39,7 +41,7 @@ const MainLayout = () => {
         }
         fetchPosts();
         fetchTopPosts();
-    }, [])
+    }, [deldone])
 
     // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
