@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import Layout from '../common/Layout';
+import { Link } from 'react-router-dom';
 
 const LoginHeader = () => {
     return (
         <>
             <StLoginHeader>
                 <Layout>
-                    <h1>Hanghae Inside 로그인</h1>
+                    <Link to="/main"><h1>Hanghae Inside 로그인</h1></Link>
                 </Layout>
             </StLoginHeader>
         </>
@@ -23,6 +24,10 @@ const StLoginHeader = styled.div`
     h1 {
         margin-top: 30px;
         margin-left: 20px;
+    }
+    a {
+        text-decoration: none;
+        color: #fff;
     }
 `
 

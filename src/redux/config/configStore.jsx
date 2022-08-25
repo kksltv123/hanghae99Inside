@@ -3,6 +3,7 @@ import posts from "../modules/postsSlice";
 import comments from "../modules/commentsSlice";
 import user from "../modules/userSlice"
 import like from "../modules/likeSlice";
+
 const store = configureStore({
     reducer: {
         posts,

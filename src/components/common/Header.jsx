@@ -3,22 +3,22 @@ import Layout from './Layout';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import axios from 'axios';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { __logout } from '../../redux/modules/userSlice';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     const navigate = useNavigate();
     const nickname = localStorage.getItem('nickname');
     const isLogin = localStorage.getItem('isLogin');
     const success = useSelector((state) => state.user.success)
-    const [ logout, setLogout ] = useState(success)
+    const [ logIn, setLogIn ] = useState(success)
     const dispatch = useDispatch()
 
     console.log(isLogin)
-    // console.log(success)
-    console.log(logout)
+    console.log(success)
+    console.log(logIn)
 
 
     // 로그아웃 토큰 지우기
@@ -26,7 +26,7 @@ const Header = () => {
         const logoutM = window.confirm("정말 로그아웃 하실건가요?")
         if(logoutM === true) {
             dispatch(__logout());
-            setLogout(success)
+            setLogIn(success)
             console.log(success)
             window.localStorage.clear();
         } else { return }
@@ -35,7 +35,7 @@ const Header = () => {
     return (
         <>
             <StTopHeader>
-                <StTitle>Hanghae Inside</StTitle>
+                <Link to="/main"><StTitle>Hanghae Inside</StTitle></Link>
                 <StInput />
                 {isLogin ?
                     <StDiv>
@@ -72,6 +72,9 @@ const StTopHeader = styled.div`
     margin: 0 auto;
     padding: 20px;
     align-items: center;
+    a {
+        text-decoration: none;
+    }
 `
 const StInput = styled.input`
     border: 2px solid ${(props) => props.theme.colors.mainColor};

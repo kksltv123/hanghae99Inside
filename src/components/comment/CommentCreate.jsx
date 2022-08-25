@@ -45,7 +45,7 @@ const CommentCreate = () => {
             content : content,
             password : password,
         }))
-        dispatch(getCommentsAsync(params.postId))
+        dispatch(getCommentsAsync(id))
         setNickname("")
         setPassword("")
         setContent("")
