@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
+import { act } from "react-dom/test-utils"
 
 export const getCommentsAsync = createAsyncThunk (
     "comments/getCommentsAsync",
@@ -42,10 +43,7 @@ export const deleteCommentsAsync = createAsyncThunk (
     async(payload,data) => {
         console.log(payload)
         try{
-            const response = await axios.delete(`https://gitpher.shop/api/comments/${payload.id}`,{
-                id : payload.id,
-                password : payload.password
-            })
+            const response = await axios.delete(`https://gitpher.shop/api/comments/${payload.id}`)
             return data.fulfillWithValue(response.data)    
         }catch (e) {
             return data.rejectWithValue(e)
@@ -96,7 +94,7 @@ export const commentsSlice = createSlice({
             return
         },
         [deleteCommentsAsync.fulfilled] : (state, action) => {
-            console.log(action)
+            state.susccess = action.payload
             return
         },
         [editCommentsAsync.fulfilled] : (state, action) => {
