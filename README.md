@@ -141,14 +141,16 @@ Header를 통해 들어오는 Token 및 request 값을 바탕으로 올바르지
 
 ## **🐛 트러블 슈팅**
 
+### 프론트
+https://kownyoungjun.tistory.com/26
 
-
+### 백앤드
 [트러블 슈팅 한눈에 보기](https://www.notion.so/3ba6b1c3b2bb409dbe9fc26562616120)
 
 
 
 ## 📝 Git Commit Message Rule
-
+### 백앤드 Commit Message Rule
 ### **Format: [ 수정자 ] < type > commit message**
 
 - **feat** : 새로운 기능에 대한 커밋
@@ -172,8 +174,3 @@ Header를 통해 들어오는 Token 및 request 값을 바탕으로 올바르지
 
 ### **→ Rebase를*사용하고 Git Commit 양식을 지킴으로써 Git을 깔끔하게 관리했다.***
 
-## ✨🧩 **Post와 Member Entity의 불필요한 의존 관계 제거**
-![Untitled (2)](https://user-images.githubusercontent.com/108355379/186662730-ef221132-050c-4112-a47b-ff9471064fae.png)
-![createdById](https://user-images.githubusercontent.com/108355379/186662763-ed605851-2018-4698-8254-8df9bc996ee7.png)
-
-### **→ *Post Entity에 Member 객체를 통째로 넣지
