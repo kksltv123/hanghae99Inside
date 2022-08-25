@@ -19,16 +19,31 @@ export const getPostsAsync = createAsyncThunk(
 
 export const DeletePostsAsync = createAsyncThunk(
     "post/DeletePostsAsync",
-    async (postId,thunkAPI) => {
-        const response = await axios.delete(`${urlPosts}/${postId}`)
-        console.log(response) 
+    async (postId,data) => {
+        console.log(postId)
+        try{
+            const Refreshtoken = localStorage.getItem('refreshToken')
+            const Authorization = localStorage.getItem('authorization')
+            const headers = {
+                'Content-Type' : 'application/json',
+                Authorization : `${Authorization}`,
+                Refreshtoken : `${Refreshtoken}`
+            }
+            const response = await axios.delete(`${urlPosts}/${postId}`,{headers : headers})
+            return data.fulfillWithValue(response.data.msg)
+        }catch (e) {
+            return data.rejectWithValue(e)
+        }
+        
     }
 )
 
 const initialState = {
     POST : [
 
-    ]
+    ],
+    susccess : null
+
 }
 
 
@@ -42,6 +57,7 @@ export const postsSlice = createSlice({
         },
         [DeletePostsAsync.fulfilled] : (state, action) => {
             console.log(action)
+            state.susccess = action.payload
         }
     }
 })

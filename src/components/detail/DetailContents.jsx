@@ -16,16 +16,14 @@ const DetailContents = () => {
     const posts = useSelector((state) => state.posts.POST)
     // const post = posts.POST.find((board) => board.postId === params.postId)
     const susccess = useSelector((state) => state.like.susccess)
-
+   
     
 
-    useEffect(() => {
-        dispatch(getPostsAsync(params.postId))
-    },[susccess])
 
+ 
     const onClicDelete = (e) => {
         e.preventDefault();
-        dispatch(DeletePostsAsync(posts.id))
+        dispatch(DeletePostsAsync(params.postId))
         navigate("/")
     }
 
@@ -43,6 +41,9 @@ const DetailContents = () => {
     useEffect(() => {
         dispatch(getPostsAsync(params.postId))
     },[susccess])
+
+
+
    
 
     return (
