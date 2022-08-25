@@ -15,12 +15,13 @@ const DetailContents = () => {
     const navigate = useNavigate()
     const posts = useSelector((state) => state.posts.POST)
     // const post = posts.POST.find((board) => board.postId === params.postId)
+    const susccess = useSelector((state) => state.like.susccess)
 
     
 
     useEffect(() => {
         dispatch(getPostsAsync(params.postId))
-    },[])
+    },[susccess])
 
     const onClicDelete = (e) => {
         e.preventDefault();
@@ -31,12 +32,17 @@ const DetailContents = () => {
     const onLike = (e) => {
         e.preventDefault();
         dispatch(postLikeAsync(params.postId))
+    
     }
 
     const onUnlike = (e) => {
         e.preventDefault();
         dispatch(postUnlikeAsync(params.postId))
     }
+
+    useEffect(() => {
+        dispatch(getPostsAsync(params.postId))
+    },[susccess])
    
 
     return (
@@ -56,6 +62,12 @@ const DetailContents = () => {
                     {posts?.content}
                     <Image src = {posts?.postImg} />
                     <HeartBox>
+                        <LikeDiv>
+                        {posts.heartCnt}
+                        </LikeDiv>
+                        <UnlikeDiv>
+                        {posts.unHeartCnt}
+                        </UnlikeDiv>
                         <LikeBtn type="button" onClick={onLike}><img src={like} alt="" width="60" height="60"/></LikeBtn>
                         <LikeBtn type="button" onClick={onUnlike}><img src={unlike} alt="" width="60" height="60"/></LikeBtn>
                     </HeartBox>
@@ -101,7 +113,8 @@ const ContentDiv = styled.div`
 
 const HeartBox = styled.div`
     width: 300px;
-    height: 75px;
+    height: 80px;
+    padding-top: 10px;
     border: 1px solid Lightgray;
     margin: 20px auto;
     text-align: center;
@@ -117,10 +130,6 @@ const LikeBtn = styled.button`
     background-color: white;
     border-radius: 80px;
     border: 1px solid white;
-    &:hover{
-        width: 80px;
-        background-color: #3b4890 ;
-    }
 `
 
 const Image = styled.img`
@@ -132,4 +141,21 @@ const StyleBtn = styled.button`
     background-color: #3b4890;
     border-color: #29367c;
     color: #fff
+`
+const LikeDiv = styled.div`
+    color: #d31900;
+    float : left;
+    margin: 25px auto;
+    margin-left: 30px;
+    font-size: 25px;
+    font-weight: bold;
+`
+
+const UnlikeDiv = styled.div`
+    color : #29367c;
+    float : right;
+    margin: 25px auto;
+    margin-right: 30px;
+    font-size: 25px;
+    font-weight: bold;
 `
