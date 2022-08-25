@@ -1,8 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 
-// REACT_APP_POSTS = "https://gitpher.shop/api/posts"
-
 const urlPosts = process.env.REACT_APP_POSTS
 
 export const getPostsAsync = createAsyncThunk(

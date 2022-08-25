@@ -9,6 +9,7 @@ import TopContents from './TopContents';
 
 const MainLayout = () => {
     // 전체글
+    // 업데이트
     const [posts, setPosts] = useState([]);
     const [topPosts, setTopPosts] = useState([]);
     const [loading, setLoading] = useState(false);
