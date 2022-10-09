@@ -134,7 +134,7 @@ Header를 통해 들어오는 Token 및 request 값을 바탕으로 올바르지
 ## **🐛 트러블 슈팅**
 
 ### 프론트
-https://kownyoungjun.tistory.com/26
+https://kownyoungjun.tistory.com/26<br><br>
 https://kksltv.tistory.com/45
 
 ### 백앤드
