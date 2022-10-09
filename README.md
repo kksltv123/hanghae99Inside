@@ -131,10 +131,10 @@ Header를 통해 들어오는 Token 및 request 값을 바탕으로 올바르지
 [API 설계 한눈에 보기](https://www.notion.so/0bba5380d0f941a68618da529d068091)
 
 
-## **🐛 트러블 슈팅**
+## **🐛 블로그 정리**
 
 ### 프론트
-https://kownyoungjun.tistory.com/26
+https://kksltv.tistory.com/45
 
 ### 백앤드
 [트러블 슈팅 한눈에 보기](https://www.notion.so/3ba6b1c3b2bb409dbe9fc26562616120)
@@ -157,11 +157,4 @@ https://kownyoungjun.tistory.com/26
 
 
 
-## 💗🌟 8조 잘한 점
-
-## ✨🧩 **깔끔한 Git 관리**
-![깃 로그 PNG](https://user-images.githubusercontent.com/108355379/186662591-a002e23e-d589-4357-9968-bcfe38e0aa99.png)
-![Untitled (1)](https://user-images.githubusercontent.com/108355379/186662674-da1a7d52-56f7-493b-a7e2-5a4e6015e84d.png)
-
-### **→ Rebase를*사용하고 Git Commit 양식을 지킴으로써 Git을 깔끔하게 관리했다.***
 
