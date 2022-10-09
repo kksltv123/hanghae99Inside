@@ -131,9 +131,10 @@ Header를 통해 들어오는 Token 및 request 값을 바탕으로 올바르지
 [API 설계 한눈에 보기](https://www.notion.so/0bba5380d0f941a68618da529d068091)
 
 
-## **🐛 블로그 정리**
+## **🐛 트러블 슈팅**
 
 ### 프론트
+https://kownyoungjun.tistory.com/26
 https://kksltv.tistory.com/45
 
 ### 백앤드
